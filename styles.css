@@ -1,0 +1,493 @@
+/* Общие стили для всего приложения */
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+  background: linear-gradient(#481173, #cb11ab);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: #ffffff; /* Белый текст */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.info {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 50px;
+}
+
+.cupons,
+.info-btn {
+  padding: 0 10px 0 10px;
+  width: auto;
+  line-height: 48px;
+  text-align: center;
+  font-size: 18px;
+  background: rgba(255, 64, 212, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.gift {
+  width: 70px;
+}
+
+.timer-section {
+  position: absolute;
+  top: 10%;
+  left: 75%;
+  z-index: 1001;
+}
+
+.gift-btn {
+  background: rgba(255, 64, 212, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  text-align: center;
+}
+
+.gift-btn[disabled] {
+  background: rgba(255, 64, 212, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.gift-btn a {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.wheel-container {
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+  width: 400px;
+}
+
+.wheel1 {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 380px;
+  height: 380px;
+  transform: rotate(15deg);
+  transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.wheel2 {
+  position: absolute;
+  top: 65px;
+  left: 75px;
+  width: 250px;
+  height: 250px;
+  /*transform: rotate(30deg);*/
+  transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.wheel3 {
+  position: absolute;
+  top: 115px;
+  left: 125px;
+  width: 150px;
+  height: 150px;
+  /*transform: rotate(30deg);*/
+  transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.btn-spin {
+  position: absolute;
+  top: 155px;
+  left: 162px;
+  width: 75px;
+  height: 75px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background-color: #202020;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* .btn-spin::before {
+  position: absolute;
+  content: "♥";
+  font-size: 24px;
+  top: -15px;
+  left: 32px;
+  transform: rotate(180deg);
+} */
+
+.btn-spin-img {
+  width: 75px;
+  height: 75px;
+}
+
+.arrow3 {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 140px;
+  left: 190px;
+  transform: rotate(-90deg);
+  z-index: 1001;
+}
+
+#loading {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 42px;
+  background-color: rgba(0, 0, 0, 1); /* Полупрозрачный фон */
+  justify-content: center;
+  align-items: center;
+  z-index: 1005;
+}
+
+.spins-section {
+  margin-bottom: 5px;
+  padding: 5px;
+  width: 90%;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.spins-info {
+  height: 50px;
+  line-height: 48px;
+  text-align: center;
+}
+
+.spins-left {
+  font-size: 24px;
+}
+
+.spins-spent {
+}
+
+.ref-section {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  height: 90px;
+  margin-bottom: 5px;
+}
+
+.invite,
+.free-spin {
+  width: 165px;
+  height: 70px;
+  padding: 5px 15px 5px 15px;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.invite p, .free-spin p {
+  margin: 0 0 5px 0;
+}
+
+.invite-btn, .free-spin-btn {
+  width: auto;
+  height: 30px;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  background-color: #ff40d4;
+  color: #ffffff;
+  border-radius: 15px;
+  border: none;
+}
+
+.free-spin span {
+  font-size: 14px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.menu a {
+  height: 40px;
+  padding: 5px 15px 5px 15px;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  text-decoration: none;
+  text-align: center;
+  line-height: 25px;
+  color: #ffffff;
+}
+
+.menu .active {
+  color: #ffffff;
+  background-color: #ff40d4;
+}
+
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  color: #202020;
+  position: relative; /* Родитель для кнопки закрытия */
+  background-color: aliceblue;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-content a {
+  height: 40px;
+  padding: 5px 15px 5px 15px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #ff40d4;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px; /* Отступ от верхнего края */
+  right: 10px; /* Отступ от правого края */
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-button:hover {
+  color: #ff40d4; /* Изменение цвета при наведении */
+}
+
+/* 
+#taskList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 90%; 
+  margin: 0 auto; 
+} */
+
+
+/* .task {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 15px; 
+  background-color: #202020;
+  border: 1px solid gray; 
+  border-radius: 16px; 
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+} */
+
+/* .task:hover {
+  background-color: #e0f7fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */
+
+/* 
+.task a {
+  height: 40px;
+  line-height: 25px;
+  text-align: center;
+  padding: 5px 15px 5px 15px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #ff40d4;
+}
+
+
+.task span {
+  font-size: 16px; 
+  color: white;
+} */
+
+.invite-link {
+  width: 90%;
+  display: flex; /* Используем flexbox для выравнивания */
+  flex-direction: column;
+  justify-content: space-between; /* Разделяем текст и ссылку на противоположные стороны */
+  align-items: flex-start;
+  padding: 15px; /* Добавляем отступы вокруг текста */
+  background-color: #202020; /* Светлый фон */
+  border: 1px solid gray; /* Легкая граница */
+  border-radius: 16px; /* Скругляем углы */
+  margin-bottom: 10px; /* Отступ снизу между элементами */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Плавный переход для фона и тени */
+}
+
+.invite-content {
+  display: flex;
+  align-items: center;
+}
+
+.invite-content button {
+  height: 40px;
+  line-height: 25px;
+  text-align: center;
+  padding: 5px 15px 5px 15px;
+  border-radius: 16px;
+  border: none;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #ff40d4;
+}
+
+.referrals-count {
+  width: 90%;
+  display: flex; /* Используем flexbox для выравнивания */
+  flex-direction: column;
+  justify-content: space-between; /* Разделяем текст и ссылку на противоположные стороны */
+  align-items: flex-start;
+  padding: 15px; /* Добавляем отступы вокруг текста */
+  background-color: #202020; /* Светлый фон */
+  border: 1px solid gray; /* Легкая граница */
+  border-radius: 16px; /* Скругляем углы */
+  margin-bottom: 10px; /* Отступ снизу между элементами */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Плавный переход для фона и тени */
+}
+
+.referals-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.referals-content p {
+  display: block;
+}
+
+#taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Стили для карточек задач */
+.task-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Название задачи */
+.task-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+/* Описание задачи */
+.task-card p {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #dddddd;
+}
+
+/* Кнопка действия */
+.task-button {
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(45deg, #ff40d4, #cb11ab);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+}

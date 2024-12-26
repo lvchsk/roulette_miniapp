@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Друзья</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="loading">Загрузка...</div>
+        <h1>Приглашай и вращай</h1>
+        <p>За каждого друга вы получаете 1 вращение</p>
+        <div class="invite-section">
+            <button class="invite-btn" id="inviteFriendBtn">Пригласить друга</button>
+        </div>
+        <div class="invite-link">
+            <p>Скопировать вашу ссылку</p>
+            <div class="invite-content">
+                <span id="referralLink"></span>
+                <button id="copyLinkBtn">Копировать</button>
+            </div>
+        </div>
+        <div class="referrals-count">
+            <h1>Статистика</h1>
+            <div class="referals-content">
+                <p>Всего друзей: <span id="referralsCount">0</span></p>
+                <p>Вращения: <span id="spinsSpent">0</span></p>
+            </div>
+        </div>
+        <div class="menu">
+            <a href="../" id="homeLink">Рулетка</a>
+            <a href="./friends.html" id="friendsLink">Друзья</a>
+            <a href="./tasks.html" id="tasksLink">Задания</a>
+        </div>
+    </div>
+    <script src="./friends.js"></script>
+</body>
+
+</html>
