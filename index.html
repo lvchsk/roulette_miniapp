@@ -1,11 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Spins & Referrals</title>
+  <!-- Подключаем Telegram WebApp SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <!-- Подключаем внешний файл стилей -->
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
-    <div>jopa</div>
+  <div class="container">
+    <div class="info">
+      <div class="cupons">Мои купоны</div>
+      <div class="info-btn">Как играть?</div>
+    </div>
+    <div id="loading">Загрузка...</div>
+    <div id="initDataDisplay"></div>
+    <div class="timer-section">
+      <img class="gift" src="./Photos/gift.png" alt="gift">
+      <button class="gift-btn" disabled><a href="https://www.google.ru/">Получить<br>подарок</a></button>
+    </div>
+    <div class="wheel-container">
+      <img class="wheel1" id="rotatingWheel" src="./Photos/wheel1.png" alt="wheel">
+      <img class="wheel2" id="rotatingWheel2" src="./Photos/wheel2.png" alt="wheel2">
+      <img class="wheel3" id="rotatingWheel3" src="./Photos/wheel3.png" alt="wheel3">
+      <img class="arrow3" src="/Photos/arrow.png" alt=">">
+      <button class="btn-spin" id="btnMinus" type="button">
+        <img class="btn-spin-img" src="/Photos/play.png" alt="play">
+      </button>
+    </div>
+
+    <div id="prizeDisplay">Вы выиграли - </div>
+    <div class="spins-section">
+      <div class="spins-info">
+        <div class="spins-left" id="spinsRemaining">0 Вращений</div>
+      </div>
+    </div>
+    <div class="ref-section">
+      <div class="invite">
+        <p>3 Вращения</p>
+        <button class="invite-btn" id="inviteFriendBtn">Получить</button>
+      </div>
+      <div class="free-spin">
+        <p>Бесплатный спин</p>
+        <button class="free-spin-btn" id="giftButton"><span id="timer"></span></button>
+      </div>
+    </div>
+    <div class="menu">
+      <a href="/" id="homeLink">Рулетка</a>
+      <a href="./Pages/friends.html" id="friendsLink">Друзья</a>
+      <a href="./Pages/tasks.html" id="tasksLink">Задания</a>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+          <button class="close-button" id="closeModalButton">&times;</button>
+          <!--<img src="./Photos/gift.png" alt="Prize">-->
+          <h2>Вы выиграли!</h2>
+          <a href="#">Получить</a>
+      </div>
+  </div>
+    <div id="responseData" class="response-display"></div>
+  </div>
+  <script src="/main.js"></script>
 </body>
+
 </html>
