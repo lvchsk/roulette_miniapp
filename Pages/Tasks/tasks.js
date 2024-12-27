@@ -24,13 +24,8 @@ window.addEventListener("load", async () => {
       if (!response.ok) {
         throw new Error(`Ошибка: ${response.status}`);
       }
-
-      // Преобразуем ответ в JSON
       const tasks = await response.json();
-      console.log(tasks);
-      
 
-      // Вызываем функцию для отображения задач
       displayTasks(tasks.projects);
     } catch (error) {
       console.error("Ошибка при получении задач:", error);
@@ -42,41 +37,35 @@ window.addEventListener("load", async () => {
     taskList.innerHTML = "";
 
     tasks.forEach((task) => {
-        // Создаем контейнер для карточки
         const card = document.createElement("div");
         card.classList.add("task-card");
 
-        // Название задачи
         const taskName = document.createElement("h3");
         taskName.textContent = task.name;
         card.appendChild(taskName);
 
-        // Описание задачи
         const taskDescription = document.createElement("p");
         taskDescription.textContent = task.description;
         card.appendChild(taskDescription);
 
-        // Кнопка действия
         const taskButton = document.createElement("a");
         taskButton.href = task.link;
         taskButton.textContent = task.buttonText;
         taskButton.classList.add("task-button");
         card.appendChild(taskButton);
 
-        // Добавляем карточку в список
         taskList.appendChild(card);
     });
 }
 
   fetchTasks();
-  //   displayTasks(tasks);
 
   function highlightActiveLink() {
-    const currentPath = window.location.pathname.replace(/^\/Pages\/(.+)/, './$1');
+    const currentPath = window.location.pathname.replace(/^\/Pages\/.+\/(.+)/, './$1');
     // console.log('Путь: ', currentPath);
 
     const links = document.querySelectorAll(".menu a");
-    // console.log('HREF:', links[0].getAttribute("href"));
+    // console.log('HREF:', links[2].getAttribute("href"));
 
     links.forEach((link) => {
       if (link.getAttribute("href") === currentPath) {
