@@ -47,26 +47,24 @@ window.addEventListener("load", async () => {
 
       const couponItem = document.createElement("h3");
       couponItem.textContent = coupon;
-      couponItem.id = 'coupon'
+      couponItem.id = "coupon";
       card.appendChild(couponItem);
 
-      const taskButton = document.createElement("button");
-      taskButton.textContent = "Копировать";
-      taskButton.classList.add("coupon-button");
-      taskButton.id = "copyLinkBtn";
-      card.appendChild(taskButton);
+      const copyButton = document.createElement("button");
+      copyButton.textContent = "Копировать";
+      copyButton.classList.add("coupon-button");
+      copyButton.id = "copyLinkBtn";
+      card.appendChild(copyButton);
+
+      copyButton.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(coupon);
+          alert("Купон скопирован: " + coupon);
+        } catch (err) {
+          console.error("Ошибка при копировании:", err);
+          alert("Ошибка при копировании.");
+        }
+      });
     });
   }
-
-  document.getElementById("copyLinkBtn").addEventListener("click", async () => {
-    const textToCopy = document.getElementById("coupon").innerText;
-
-    try {
-      await navigator.clipboard.writeText(textToCopy);
-      alert("Купон скопирован: " + textToCopy);
-    } catch (err) {
-      console.error("Ошибка при копировании:", err);
-      alert("Ошибка при копировании.");
-    }
-  });
 });
