@@ -91,7 +91,7 @@ window.addEventListener('load', async () => {
     });
 
     function highlightActiveLink() {
-        const currentPath = window.location.pathname.replace(/^\/Pages\/(.+)/, './$1');
+        const currentPath = window.location.pathname.replace(/^\/Pages\/.+\/(.+)/, './$1');
         // console.log(currentPath);
 
         const links = document.querySelectorAll(".menu a");
