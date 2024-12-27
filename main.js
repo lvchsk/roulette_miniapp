@@ -52,24 +52,27 @@ window.addEventListener("load", async () => {
 
   updateSpinsDisplay();
 
-  const giftButton = document.getElementById("giftButton");
+  const freeSpinButton = document.getElementById("freeSpinButton");
   const timerElement = document.getElementById("timer");
+  const timerInterval = setInterval(updateTimer, 1000);
 
   function updateTimer() {
     const now = new Date();
     const diff = nextGiftTime - now;
 
     if (diff <= 0) {
-      giftButton.addEventListener("click", giftHandler);
-      giftButton.addEventListener("touchstart", giftHandler);
-      timerElement.innerText = "0:00";
-      giftButton.disabled = false;
-      giftButton.innerText = "Получить спин";
+      freeSpinButton.addEventListener("click", giftHandler);
+      freeSpinButton.addEventListener("touchstart", giftHandler);
+      timerElement.innerText = "";
+      freeSpinButton.disabled = false;
+      freeSpinButton.innerText = "Получить спин";
       clearInterval(timerInterval);
     } else {
-      giftButton.removeEventListener('click', giftHandler)
-      giftButton.removeEventListener('touchstart', giftHandler)
-      giftButton.disabled = true;
+      freeSpinButton.removeEventListener("click", giftHandler);
+      freeSpinButton.removeEventListener("touchstart", giftHandler);
+      freeSpinButton.disabled = true;
+      freeSpinButton.classList.add('disabled_btn');
+      timerElement.classList.add('disabled_timer')
       const hours = Math.floor(diff / 3600000);
       const minutes = Math.floor((diff % 3600000) / 60000);
       const seconds = Math.floor((diff % 60000) / 1000);
@@ -79,7 +82,6 @@ window.addEventListener("load", async () => {
     }
   }
 
-  const timerInterval = setInterval(updateTimer, 1000);
   updateTimer();
 
   async function giftHandler() {
@@ -102,7 +104,7 @@ window.addEventListener("load", async () => {
         nextGiftTime = new Date(new Date().getTime() + giftCooldown); // Устанавливаем новое время ожидания
         spins += 1;
         updateSpinsDisplay();
-        giftButton.disabled = true;
+        freeSpinButton.disabled = true;
         clearInterval(timerInterval);
         setInterval(updateTimer, 1000);
         updateTimer();
@@ -112,8 +114,6 @@ window.addEventListener("load", async () => {
       alert("Ошибка при запросе подарка. Попробуйте позже.");
     }
   }
-
-
 
   // Функция вращения
 
@@ -147,30 +147,54 @@ window.addEventListener("load", async () => {
 
   const btnMinus = document.getElementById("btnMinus");
 
-  const modal = document.getElementById("myModal");
-  const closeModalButton = document.getElementById("closeModalButton");
+  // Модалка призов
+  const prizeModal = document.getElementById("prizeModal");
+  const closePrizeModalButton = document.getElementById(
+    "closePrizeModalButton"
+  );
 
-  // Закрытие модального окна
-  closeModalButton.addEventListener("click", () => {
-    modal.style.display = "none";
+  closePrizeModalButton.addEventListener("click", () => {
+    prizeModal.style.display = "none";
   });
 
-  // Закрытие модального окна при клике вне его
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      modal.style.display = "none";
+  prizeModal.addEventListener("click", (event) => {
+    if (event.target === prizeModal) {
+      prizeModal.style.display = "none";
     }
   });
 
+  // Модалка подарка
+  const giftModal = document.getElementById("giftModal");
+  const closeGiftModalButton = document.getElementById("closeGiftModalButton");
+
+  closeGiftModalButton.addEventListener("click", () => {
+    giftModal.style.display = "none";
+  });
+
+  giftModal.addEventListener("click", (event) => {
+    if (event.target === giftModal) {
+      giftModal.style.display = "none";
+    }
+  });
+
+  const giftButton = document.getElementById("giftButton");
+
+  function openGiftModal() {
+    giftModal.style.display = "flex";
+  }
+
+  giftButton.addEventListener("click", openGiftModal);
+  giftButton.addEventListener("touchstart", openGiftModal);
+
   async function handleButtonClick() {
     if (btnMinus.disabled) return;
-        btnMinus.disabled = true;
-        console.log("Кнопка нажата!");
+    btnMinus.disabled = true;
+    console.log("Кнопка нажата!");
 
-        setTimeout(() => {
-          btnMinus.disabled = false;
-          console.log("Кнопка снова активна");
-        }, 7500);
+    setTimeout(() => {
+      btnMinus.disabled = false;
+      console.log("Кнопка снова активна");
+    }, 7500);
     try {
       const resp = await fetch("https://bestx.cam/update-spins", {
         method: "POST",
@@ -185,7 +209,7 @@ window.addEventListener("load", async () => {
       }
 
       const result = await resp.json();
-      
+
       if (result.success) {
         spins = result.spins;
         // if (spins === 0) return;
@@ -203,7 +227,7 @@ window.addEventListener("load", async () => {
         if (["iphone", "5000", "500"].includes(prize)) {
           setTimeout(() => {
             console.log("Модальное окно открыто");
-            modal.style.display = "flex";
+            prizeModal.style.display = "flex";
           }, 7000);
         }
 
@@ -212,7 +236,6 @@ window.addEventListener("load", async () => {
         ).innerText = `Вы выиграли - ${prize} ${degree}`;
       } else {
         console.log(result.message);
-        
       }
     } catch (error) {
       console.error("Ошибка при уменьшении спинов:", error);

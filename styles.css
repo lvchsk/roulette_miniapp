@@ -247,6 +247,14 @@ body {
   border: none;
 }
 
+.disabled_btn {
+  background-color: #90377b;
+}
+
+.disabled_timer {
+  color: lightgray;
+}
+
 .free-spin span {
   font-size: 14px;
 }
@@ -327,4 +335,38 @@ body {
 
 .close-button:hover {
   color: #ff40d4; 
+}
+
+.gift_modal-content {
+  color: #202020;
+  position: relative;
+  /* background-color: aliceblue; */
+  /* padding: 20px; */
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 500px;
+  /* width: 90%; */
+}
+
+.gift_modal-content a {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  /* height: 40px; */
+  width: 200px;
+  margin-bottom: 10px;
+  padding: 5px 15px 5px 15px;
+  border-radius: 16px;
+  text-decoration: none;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #ff40d4;
+}
+
+.modal-img {
+  width: 300px;
+  border-radius: 5px;
 }
