@@ -1,81 +1,149 @@
 * {
-    box-sizing: border-box;
-    user-select: none;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", serif;
-    font-weight: 700;
-    font-style: normal;
-    background: linear-gradient(#2d0749, #7a077a);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 0; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    max-width: 400px;
-    padding: 10px 0 0 0;
-    text-align: center;
-    overflow: hidden;
-  }
+  box-sizing: border-box;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
 
-  .back {
-    padding: 0 20px 0 0;
-    align-self: flex-end;
-    font-size: 24px;
-    text-decoration: none;
-    color: white;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-style: normal;
+  background-color: rgb(21, 21, 23);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
 
-  #couponsList {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 90%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  text-align: center;
+  overflow: hidden;
+}
 
-  .coupon-card {
-    display: flex;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  .coupon-card h3 {
-    margin: 0 0 10px 0;
-    font-size: 20px;
-    color: #ffffff;
-  }
+.back {
+  padding: 10px 20px 0 0;
+  align-self: flex-end;
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+}
 
-  .coupon-button {
-    text-decoration: none;
-    color: #ffffff;
-    background: linear-gradient(45deg, #ff40d4, #cb11ab);
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    text-align: center;
-  }
+.info_container {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(129, 48, 168);
+  background: radial-gradient(
+    at 50% 0%,
+    rgba(129, 48, 168, 1) 0%,
+    rgba(28, 9, 37, 1) 70%
+  );
+  border-radius: 0 0 16px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.info_user {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.info_container p {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  align-self: flex-start;
+  font-size: 8px;
+  color: gray;
+}
+
+.info_container h5 {
+  color: gray;
+}
+
+.link_btn {
+  margin-bottom: 10px;
+  width: 80%;
+  align-self: center;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(45deg, #ff40d4, #cb11ab);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.coupons_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 0 0 0;
+  background-color: rgb(21, 21, 23);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px 16px 0 0;
+}
+
+.coupons_container h1 {
+  padding: 0 0 0 20px;
+  align-self: flex-start;
+}
+
+#couponsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.coupon-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.coupon-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.coupon-button {
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(45deg, #ff40d4, #cb11ab);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}

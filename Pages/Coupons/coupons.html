@@ -14,11 +14,22 @@
 </head>
 <body>
     <div class="container" id="container">
-        <a class="back" href="../../" id="homeLink">X</a>
-        <h1>Мои купоны</h1>
-        <ul id="couponsList">
-
-        </ul>
+        <div class="info_container">
+            <a class="back" href="../../" id="homeLink">X</a>
+            <div class="info_user">
+                <h1 class="info_user_name">PUG</h1>
+                <h5>Всего купонов</h5>
+                <h1 class="info_user_coupons" id="count">0</h1>
+            </div>
+            <p>Чтобы получить код активации, пришлите менеджеру Ваш купон:</p>
+            <button class="link_btn" id="couponsLink">Получить код активации</button>
+        </div>
+        <div class="coupons_container">
+            <h1>Купоны</h1>
+            <ul id="couponsList">
+    
+            </ul>
+        </div>
     </div>
     <script src="./coupons.js"></script>
 </body>

@@ -6,9 +6,12 @@ window.addEventListener("load", async () => {
 
   tg.expand();
 
+  const count = document.getElementById('count')
+  count.innerText = '0'
   const container = document.getElementById("container");
+
   container.style.overflow = "auto";
-  container.style.height = "80vh";
+  // container.style.height = "80vh";
   container.style.position = "absolute";
 
   try {
@@ -29,6 +32,7 @@ window.addEventListener("load", async () => {
 
     if (data.success) {
       const coupons = data.codes;
+      count.innerText = data.codes.length
       displayCoupons(coupons);
     }
   } catch (err) {
