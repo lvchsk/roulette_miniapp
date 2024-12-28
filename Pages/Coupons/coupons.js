@@ -11,7 +11,6 @@ window.addEventListener("load", async () => {
   const container = document.getElementById("container");
 
   container.style.overflow = "auto";
-  // container.style.height = "80vh";
   container.style.position = "absolute";
 
   try {

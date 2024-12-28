@@ -13,25 +13,37 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <div id="loading">Загрузка...</div>
-        <h1>Приглашай и вращай</h1>
-        <p>За каждого друга вы получаете 1 вращение</p>
-        <button class="invite-btn" id="inviteFriendBtn">Пригласить друга</button>
-        <div class="invite-link">
-            <p>Скопировать вашу ссылку</p>
-            <div class="invite-content">
+        <div class="info_container">
+            <h1>Приглашай и вращай</h1>
+            <p>За каждого друга вы получаете 1 вращение</p>
+            <button class="invite-btn" id="inviteFriendBtn">Пригласить друга</button>
+            <div class="invite-link">
+                <p>Скопировать вашу ссылку</p>
                 <span id="referralLink"></span>
-                <button id="copyLinkBtn">Копировать</button>
             </div>
         </div>
-        <div class="referrals-count">
+        <div class="referrals-stats">
             <h1>Статистика</h1>
             <div class="referals-content">
-                <p>Всего друзей: <span id="referralsCount">0</span></p>
-                <p>Вращения: <span id="spinsSpent">0</span></p>
+                <div class="friends-count">
+                    <h1 id="referralsCount">0</h1>
+                    <p>Всего друзей</p>
+                </div>
+                <div class="spins">
+                    <h1 id="spinsCount">0</h1>
+                    <p>Вращения</p>
+                </div>
             </div>
         </div>
+        <div class="list_container">
+            <h1>Друзья</h1>
+            <div class="referral-list" id="referralList">
+
+            </div>
+        </div>
+        <div id="copyNotification" class="hidden">Ссылка скопирована!</div>
         <div class="menu">
             <a href="../../" id="homeLink">Рулетка</a>
             <a href="./friends.html" id="friendsLink">Друзья</a>
