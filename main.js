@@ -33,6 +33,7 @@ window.addEventListener("load", async () => {
 
     if (data.success) {
       spins = data.spins;
+      referralLink = `https://t.me/rollingwinbot?start=${data.referralCode}`;
 
       const [datePart, timePart] = data.registrationDate.split("_");
       const [day, month, year] = datePart.split(":");
