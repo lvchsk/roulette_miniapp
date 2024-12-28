@@ -231,9 +231,9 @@ window.addEventListener("load", async () => {
           }, 7000);
         }
 
-        document.getElementById(
-          "prizeDisplay"
-        ).innerText = `Вы выиграли - ${prize} ${degree}`;
+        // document.getElementById(
+        //   "prizeDisplay"
+        // ).innerText = `Вы выиграли - ${prize} ${degree}`;
       } else {
         console.log(result.message);
       }
