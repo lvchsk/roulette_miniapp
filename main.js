@@ -126,25 +126,66 @@ window.addEventListener("load", async () => {
   let currentDegree2 = 0;
   let currentDegree3 = 0;
 
+  // function rotateWheel(degree) {
+  //   let cum = 360 - degree + 30;
+  //   currentDegree += 360 - (currentDegree % 360) + cum;
+  //   currentDegree2 += 360 - (currentDegree2 % 360) + 60;
+  //   currentDegree3 += 360 - (currentDegree3 % 360) + 60;
+
+  //   function rotateFirst() {
+  //     wheel.style.transform = `rotate(${currentDegree}deg)`;
+  //   }
+  //   function rotateSecond() {
+  //     wheel2.style.transform = `rotate(${currentDegree2}deg)`;
+  //   }
+  //   function rotateThird() {
+  //     wheel3.style.transform = `rotate(${currentDegree3}deg)`;
+  //   }
+  //   setTimeout(rotateFirst, 4000);
+  //   setTimeout(rotateSecond, 2000);
+  //   setTimeout(rotateThird, 200);
+  // }
+  
   function rotateWheel(degree) {
     let cum = 360 - degree + 30;
-    currentDegree += 360 - (currentDegree % 360) + cum;
-    currentDegree2 += 360 - (currentDegree2 % 360) + 60;
-    currentDegree3 += 360 - (currentDegree3 % 360) + 60;
 
-    function rotateFirst() {
-      wheel.style.transform = `rotate(${currentDegree}deg)`;
-    }
-    function rotateSecond() {
-      wheel2.style.transform = `rotate(${currentDegree2}deg)`;
-    }
+    const duration = 2000;
+    const spins = 3;
+
+    const targetDegree1 = currentDegree + 360 - (currentDegree % 360) + cum + (spins * 360);
+    const targetDegree2 = currentDegree2 + 360 - (currentDegree2 % 360) + 60 + (spins * 360);
+    const targetDegree3 = currentDegree3 + 360 - (currentDegree3 % 360) + 60 + (spins * 360);
+  
     function rotateThird() {
-      wheel3.style.transform = `rotate(${currentDegree3}deg)`;
+      wheel3.style.transition = `transform ${duration}ms ease-out`;
+      wheel3.style.transform = `rotate(${targetDegree3}deg)`;
+      setTimeout(() => {
+        currentDegree3 = targetDegree3;
+        rotateSecond();
+      }, duration);
     }
-    setTimeout(rotateFirst, 4000);
-    setTimeout(rotateSecond, 2000);
-    setTimeout(rotateThird, 200);
+
+    function rotateSecond() {
+      wheel2.style.transition = `transform ${duration}ms ease-out`;
+      wheel2.style.transform = `rotate(${targetDegree2}deg)`;
+      setTimeout(() => {
+        currentDegree2 = targetDegree2;
+        rotateFirst();
+      }, duration);
+    }
+  
+    function rotateFirst() {
+      wheel.style.transition = `transform ${duration}ms ease-out`;
+      wheel.style.transform = `rotate(${targetDegree1}deg)`;
+      setTimeout(() => {
+        currentDegree = targetDegree1;
+      }, duration);
+    }
+  
+    rotateThird();
   }
+  
+  
 
   const btnMinus = document.getElementById("btnMinus");
 
@@ -184,7 +225,7 @@ window.addEventListener("load", async () => {
     giftModal.style.display = "flex";
   }
 
-  giftButton.addEventListener("click", openGiftModal);
+  // giftButton.addEventListener("click", openGiftModal);
   giftButton.addEventListener("touchstart", openGiftModal);
 
   async function handleButtonClick() {
