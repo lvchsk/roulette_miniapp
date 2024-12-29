@@ -50,6 +50,7 @@ window.addEventListener("load", async () => {
 
         const taskButton = document.createElement("a");
         taskButton.href = task.link;
+        taskButton.target = '_blank'
         taskButton.textContent = task.buttonText;
         taskButton.classList.add("task-button");
         card.appendChild(taskButton);
