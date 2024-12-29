@@ -219,14 +219,19 @@ window.addEventListener("load", async () => {
     }
   });
 
-  const giftButton = document.getElementById("giftButton");
-
+  
   function openGiftModal() {
     giftModal.style.display = "flex";
   }
+  
+  const giftButton = document.getElementById("giftButton");
+  const giftImg = document.getElementById('gift-img');
+
 
   // giftButton.addEventListener("click", openGiftModal);
   giftButton.addEventListener("touchstart", openGiftModal);
+  giftImg.addEventListener('touchstart', openGiftModal)
+
 
   async function handleButtonClick() {
     if (btnMinus.disabled) return;

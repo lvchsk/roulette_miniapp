@@ -117,7 +117,7 @@ window.addEventListener("load", async () => {
 
       refferalsList.appendChild(refferalCard);
       
-      const refferalItem = document.createElement("h3");
+      const refferalItem = document.createElement("p");
       refferalItem.textContent = refferal;
       refferalItem.id = "refferal";
       refferalCard.appendChild(refferalItem);
