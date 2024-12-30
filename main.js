@@ -62,14 +62,14 @@ window.addEventListener("load", async () => {
     const diff = nextGiftTime - now;
 
     if (diff <= 0) {
-      freeSpinButton.addEventListener("click", giftHandler);
+      // freeSpinButton.addEventListener("click", giftHandler);
       freeSpinButton.addEventListener("touchstart", giftHandler);
       timerElement.innerText = "";
       freeSpinButton.disabled = false;
       freeSpinButton.innerText = "Получить спин";
       clearInterval(timerInterval);
     } else {
-      freeSpinButton.removeEventListener("click", giftHandler);
+      // freeSpinButton.removeEventListener("click", giftHandler);
       freeSpinButton.removeEventListener("touchstart", giftHandler);
       freeSpinButton.disabled = true;
       freeSpinButton.classList.add('disabled_btn');
@@ -147,7 +147,7 @@ window.addEventListener("load", async () => {
   // }
   
   function rotateWheel(degree) {
-    let cum = 360 - degree + 30;
+    let cum = 360 - degree + 15;
 
     const duration = 2000;
     const spins = 3;
@@ -290,7 +290,7 @@ window.addEventListener("load", async () => {
     }
   }
 
-  btnMinus.addEventListener("click", handleButtonClick);
+  // btnMinus.addEventListener("click", handleButtonClick);
   btnMinus.addEventListener("touchstart", handleButtonClick);
 
   document.getElementById("inviteFriendBtn").addEventListener("click", () => {
