@@ -329,12 +329,12 @@ window.addEventListener("load", async () => {
     console.log("Путь: ", currentPath);
 
     // Список ссылок
-    const links = document.querySelectorAll(".menu a");
-    console.log("HREF:", links[0].getAttribute("href"));
+    const links = document.querySelectorAll(".menu_item");
+    console.log("HREF:", links[0].lastChild.previousSibling.getAttribute("href"));
 
     links.forEach((link) => {
       // Если href совпадает с текущим путем, добавляем класс "active"
-      if (link.getAttribute("href") === currentPath) {
+      if (link.lastChild.previousSibling.getAttribute("href") === currentPath) {
         link.classList.add("active");
       } else {
         link.classList.remove("active");
