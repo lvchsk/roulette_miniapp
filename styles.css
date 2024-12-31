@@ -274,9 +274,9 @@ body {
 
 .invite,
 .free-spin {
-  width: 45%;
+  width: 48%;
   height: 65px;
-  padding: 5px 15px 0px 15px;
+  padding: 5px 2% 0px 2%;
   background-color: #6d296f;
   border-radius: 12px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -291,11 +291,14 @@ body {
 }
 
 .invite-btn, .free-spin-btn {
-  width: auto;
+  width: 90%;
   height: 30px;
   padding: 5px 30px 5px 30px;
   margin-bottom: 5px;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: "Roboto", serif;
   font-weight: 700;
   font-style: normal;
@@ -317,6 +320,7 @@ body {
 }
 
 .free-spin span {
+  width: 100%;
   font-size: 14px;
 }
 
@@ -331,12 +335,14 @@ body {
   color: white;
   background: rgba(135, 96, 145, 0.2);
   border-radius: 12px 12px 0 0;
-  padding: 20px;
+  padding: 2%;
   text-align: center;
 }
 
 .roulet_btn, .friends_btn, .tasks_btn {
   width: 100px;
+  max-height: 70px;
+  min-height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -375,14 +381,17 @@ body {
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   color: #202020;
   position: relative;
-  padding: 20px;
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   max-width: 500px;
   width: 90%;
+  height: 300px;
   z-index: 1006;
 }
 
@@ -394,6 +403,7 @@ body {
 .iphone {
   background-image: url(./Photos/prizeIphone.webp);
   background-size: contain;
+  background-repeat: no-repeat;
   width: 300px;
   height: 300px;
 }
@@ -401,6 +411,7 @@ body {
 .prize5000 {
   background-image: url(./Photos/prize5000.webp);
   background-size: contain;
+  background-repeat: no-repeat;
   width: 300px;
   height: 300px;
 }
@@ -408,10 +419,9 @@ body {
 .modal-content a {
   height: 40px;
   width: 150px;
+  margin-bottom: 20px;
   padding: 5px 15px 5px 15px;
-  position: absolute;
-  left: 25%;
-  bottom: 10px;
+  align-self: center;
   border-radius: 16px;
   line-height: 30px;
   text-decoration: none;
@@ -421,7 +431,8 @@ body {
 }
 
 .close-button {
-  position: absolute;
+  /* position: absolute; */
+  align-self: flex-end;
   top: 0;
   right: 0;
   background: none;

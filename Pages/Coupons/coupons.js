@@ -48,7 +48,7 @@ window.addEventListener("load", async () => {
       card.classList.add("coupon-card");
       couponsList.appendChild(card);
 
-      const couponItem = document.createElement("h3");
+      const couponItem = document.createElement("h6");
       couponItem.textContent = coupon;
       couponItem.id = "coupon";
       card.appendChild(couponItem);
@@ -60,14 +60,41 @@ window.addEventListener("load", async () => {
       card.appendChild(copyButton);
 
       copyButton.addEventListener("click", async () => {
+        const textToCopy = coupon;
+        const notification = document.getElementById("copyNotification");
+  
         try {
-          await navigator.clipboard.writeText(coupon);
-          alert("Купон скопирован: " + coupon);
+          await navigator.clipboard.writeText(textToCopy);
+  
+          notification.textContent = "Ссылка скопирована!";
+          notification.classList.add("show");
+          notification.classList.remove("hidden");
+  
+          setTimeout(() => {
+            notification.classList.remove("show");
+          }, 3000);
         } catch (err) {
-          console.error("Ошибка при копировании:", err);
-          alert("Ошибка при копировании.");
+          console.error("Ошибка при копировании ссылки:", err);
+  
+          notification.textContent = "Ошибка при копировании.";
+          notification.classList.add("show");
+          notification.classList.remove("hidden");
+  
+          setTimeout(() => {
+            notification.classList.remove("show");
+          }, 3000);
         }
       });
+
+      // copyButton.addEventListener("click", async () => {
+      //   try {
+      //     await navigator.clipboard.writeText(coupon);
+      //     alert("Купон скопирован: " + coupon);
+      //   } catch (err) {
+      //     console.error("Ошибка при копировании:", err);
+      //     alert("Ошибка при копировании.");
+      //   }
+      // });
     });
   }
 });
