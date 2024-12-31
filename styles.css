@@ -370,7 +370,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  z-index: 1003;
+  z-index: 1005;
 }
 
 .modal-content {
@@ -403,7 +403,7 @@ body {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #333;
+  color: #ffffff;
 }
 
 .close-button:hover {
@@ -413,13 +413,10 @@ body {
 .gift_modal-content {
   color: #202020;
   position: relative;
-  /* background-color: aliceblue; */
-  /* padding: 20px; */
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   max-width: 500px;
-  /* width: 90%; */
 }
 
 .gift_modal-content a {
@@ -428,13 +425,12 @@ body {
   left: 50px;
   /* height: 40px; */
   width: 200px;
-  margin-bottom: 10px;
-  padding: 5px 15px 5px 15px;
+  margin-bottom: 20px;
   border-radius: 16px;
   text-decoration: none;
   line-height: 40px;
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
   color: #ffffff;
   background-color: #ff40d4;
 }

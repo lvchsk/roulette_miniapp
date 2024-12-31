@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>Задания</title>
     <link
@@ -14,15 +14,48 @@
 
 <body>
     <div class="container" id="container">
-        <h1>Задания</h1>
-        <p>Выполняй задания и получай вращения</p>
-        <ul id="taskList">
+        <div class="radial_gradient">
+            <div class="info_container">
+                <h1>Задания</h1>
+                <p>Выполняй задания и получай вращения</p>
+            </div>
+                <div class="sponsor_container">
+                    <h1>Карта от партнёра</h1>
+                    <p>Оформи банковскую карту по ссылке и получи деньги на покупки в маркетплейсах и т.п</p>
+                    <div class="sponsor_card">
+                        <div class="sponsor_info">
+                            <img class="sponsor_logo"
+                                src="https://static.rustore.ru/apk/2063560046/content/ICON/0f2862c3-fa8b-4b1c-b20c-62824df00e9a.png"
+                                alt="sponsor_logo">
+                            <div class="sponsor_text">
+                                <h1>Получи 3000Р от Winline</h1>
+                                <p>Оформи регистрацию, сделай депозит 500Р, и получи 3000Р</p>
+                            </div>
+                        </div>
+                        <button><a href="https://www.google.ru/" target="_blank">Получить фрибет</a></button>
+                    </div>
+                </div>
 
-        </ul>
+        </div>
+        <div class="list_container">
+            <h1>Задания</h1>
+            <div class="task-list" id="taskList">
+    
+            </div>
+        </div>
         <div class="menu">
-            <a href="../../" id="homeLink">Рулетка</a>
-            <a href="../Friends/friends.html" id="friendsLink">Друзья</a>
-            <a href="./tasks.html" id="tasksLink">Задания</a>
+            <div class="menu_item roulet_btn">
+                <img class="menu_roulette_icon" src="../../Photos/roulette_icon.svg" alt="roulette">
+                <a href="../../" id="homeLink">Рулетка</a>
+            </div>
+            <div class="menu_item friends_btn">
+                <img class="menu_friends_icon" src="../../Photos/friends_icon.svg" alt="friends">
+                <a href="../Friends/friends.html" id="friendsLink">Друзья</a>
+            </div>
+            <div class="menu_item tasks_btn">
+                <img class="menu_tasks_icon" src="../../Photos/tasks_icon.svg" alt="tasks">
+                <a href="./tasks.html" id="tasksLink">Задания</a>
+            </div>
         </div>
     </div>
     <script src="./tasks.js"></script>

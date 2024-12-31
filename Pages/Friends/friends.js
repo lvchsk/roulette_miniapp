@@ -10,9 +10,9 @@ window.addEventListener("load", async () => {
   let referralLink = "";
   const referrals = [];
 
-  const container = document.getElementById('container');
-  container.style.height = '80vh';
-  container.style.position = 'absolute';
+  const container = document.getElementById("container");
+  // container.style.height = '80vh';
+  container.style.position = "absolute";
 
   const loading = document.getElementById("loading");
   loading.style.display = "flex";
@@ -116,17 +116,25 @@ window.addEventListener("load", async () => {
       refferalCard.classList.add("refferal-card");
 
       refferalsList.appendChild(refferalCard);
-      
+
+      const iconContainer = document.createElement("span");
+      iconContainer.classList.add("icon_container");
+
+      const friendIcon = document.createElement("img");
+      friendIcon.src = "../../Photos/friends_icon.svg";
+      iconContainer.appendChild(friendIcon);
+
+      refferalCard.appendChild(iconContainer);
+
       const refferalItem = document.createElement("p");
       refferalItem.textContent = refferal;
       refferalItem.id = "refferal";
       refferalCard.appendChild(refferalItem);
 
       const infoSpan = document.createElement("span");
-      infoSpan.classList.add('info-span');
-      infoSpan.innerText = '+1ВР'
-
-      refferalCard.appendChild(infoSpan)
+      infoSpan.classList.add("info-span");
+      infoSpan.innerText = "+1ВР";
+      refferalCard.appendChild(infoSpan);
     });
   }
 
@@ -135,12 +143,14 @@ window.addEventListener("load", async () => {
       /^\/Pages\/.+\/(.+)/,
       "./$1"
     );
-    const links = document.querySelectorAll(".menu a");
+    const links = document.querySelectorAll(".menu_item");
+    console.log(
+      "HREF:",
+      links[0].lastChild.previousSibling.getAttribute("href")
+    );
 
     links.forEach((link) => {
-      if (link.getAttribute("href") === currentPath) {
-        console.log("jopa");
-
+      if (link.lastChild.previousSibling.getAttribute("href") === currentPath) {
         link.classList.add("active");
       } else {
         link.classList.remove("active");
