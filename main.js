@@ -271,13 +271,15 @@ window.addEventListener("load", async () => {
         // Прокрутка
         rotateWheel(degree);
 
-        if (["iphone", "5000"].includes(prize)) {
+        if (["iphone", "5.000", "500"].includes(prize)) {
           setTimeout(() => {
             console.log("Модальное окно открыто");
-            if(prize === 'iphone') {              
+            if(prize === 'iphone') {   
+              prizeModal.firstChild.nextSibling.classList.remove('prize5000');
               prizeModal.firstChild.nextSibling.classList.add('iphone');
             }
-            if(prize === '5000') {
+            if(prize === '5.000') {
+              prizeModal.firstChild.nextSibling.classList.remove('iphone');
               prizeModal.firstChild.nextSibling.classList.add('prize5000');
             }
             prizeModal.style.display = "flex";
