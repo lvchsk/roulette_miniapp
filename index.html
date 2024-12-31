@@ -19,14 +19,22 @@
 <body>
     <div class="container">
         <div class="info">
-            <div class="coupons"><a href="./Pages/Coupons/coupons.html" id="couponsLink">Мои купоны</a></div>
-            <div class="info-btn">Как играть?</div>
+            <div class="coupons">
+                <img class="coupons_icon" src="./Photos/coupons_icon.svg" alt="coupons">
+                <a href="./Pages/Coupons/coupons.html" id="couponsLink">Мои купоны</a>
+            </div>
+            <div class="info-btn">
+                <img class="info_icon" src="./Photos/info_icon.svg" alt="info">
+                <p>
+                    Как играть?
+                </p>
+            </div>
         </div>
         <div id="loading">Загрузка...</div>
         <div id="initDataDisplay"></div>
         <div class="timer-section">
             <img class="gift" id="gift-img" src="./Photos/gift.png" alt="gift">
-            <button class="gift-btn" id="giftButton">Получить<br>подарок</button>
+            <button class="gift-btn" id="giftButton">Подарок</button>
         </div>
         <div class="wheel-container">
             <img class="wheel1" id="rotatingWheel" src="./Photos/wheel1.png" alt="wheel">
@@ -41,7 +49,8 @@
         </div>
         <div class="spins-section">
             <div class="spins-info">
-                <div class="spins-left" id="spinsRemaining">0 Вращений</div>
+                <img class="roulette_icon" src="./Photos/roulette_icon.svg" alt="roulette">
+                <h1 class="spins-left" id="spinsRemaining">0 Вращений</h1>
             </div>
         </div>
         <div class="ref-section">
@@ -55,9 +64,18 @@
             </div>
         </div>
         <div class="menu">
-            <a href="/" id="homeLink">Рулетка</a>
-            <a href="./Pages/Friends/friends.html" id="friendsLink">Друзья</a>
-            <a href="./Pages/Tasks/tasks.html" id="tasksLink">Задания</a>
+            <div class="menu_item roulet_btn">
+                <img class="menu_roulette_icon" src="./Photos/roulette_icon.svg" alt="roulette">
+                <a href="/" id="homeLink">Рулетка</a>
+            </div>
+            <div class="menu_item friends_btn">
+                <img class="menu_friends_icon" src="./Photos/friends_icon.svg" alt="friends">
+                <a href="./Pages/Friends/friends.html" id="friendsLink">Друзья</a>
+            </div>
+            <div class="menu_item tasks_btn">
+                <img class="menu_tasks_icon" src="./Photos/tasks_icon.svg" alt="tasks">
+                <a href="./Pages/Tasks/tasks.html" id="tasksLink">Задания</a>
+            </div>
         </div>
         <div id="prizeModal" class="modal">
             <div class="modal-content">
@@ -70,7 +88,7 @@
         <div id="giftModal" class="modal">
             <div class="gift_modal-content">
                 <button class="close-button" id="closeGiftModalButton">&times;</button>
-                <img class="modal-img" src="./Photos/gift_modal.jpg" alt="gift information">
+                <img class="modal-img" src="./Photos/gift_modal.png" alt="gift information">
                 <a href="https://www.google.ru/" target="_blank">Забрать подарок</a>
             </div>
         </div>

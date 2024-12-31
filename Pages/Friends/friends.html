@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
@@ -15,13 +15,19 @@
 <body>
     <div class="container" id="container">
         <div id="loading">Загрузка...</div>
-        <div class="info_container">
-            <h1>Приглашай и вращай</h1>
-            <p>За каждого друга вы получаете 1 вращение</p>
-            <button class="invite-btn" id="inviteFriendBtn">Пригласить друга</button>
+        <div class="radial_gradient">
+            <div class="info_container">
+                <h1>Приглашай и вращай</h1>
+                <p>За каждого друга вы получаете 1 вращение</p>
+                <button class="invite-btn" id="inviteFriendBtn">Пригласить друга</button>
+            </div>
             <div class="invite-link">
                 <p>Скопировать вашу ссылку</p>
-                <span id="referralLink"></span>
+                <div>
+                    <span id="referralLink">
+                    </span>
+                    <img class="copy_icon" src="../../Photos/copy_icon.svg" alt="copy">
+                </div>
             </div>
         </div>
         <div class="referrals-stats">
@@ -45,9 +51,18 @@
         </div>
         <div id="copyNotification" class="hidden">Ссылка скопирована!</div>
         <div class="menu">
-            <a href="../../" id="homeLink">Рулетка</a>
-            <a href="./friends.html" id="friendsLink">Друзья</a>
-            <a href="../Tasks/tasks.html" id="tasksLink">Задания</a>
+            <div class="menu_item roulet_btn">
+                <img class="menu_roulette_icon" src="../../Photos/roulette_icon.svg" alt="roulette">
+                <a href="../../" id="homeLink">Рулетка</a>
+            </div>
+            <div class="menu_item friends_btn">
+                <img class="menu_friends_icon" src="../../Photos/friends_icon.svg" alt="friends">
+                <a href="./friends.html" id="friendsLink">Друзья</a>
+            </div>
+            <div class="menu_item tasks_btn">
+                <img class="menu_tasks_icon" src="../../Photos/tasks_icon.svg" alt="tasks">
+                <a href="../Tasks/tasks.html" id="tasksLink">Задания</a>
+            </div>
         </div>
     </div>
     <script src="./friends.js"></script>
