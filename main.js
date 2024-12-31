@@ -266,21 +266,23 @@ window.addEventListener("load", async () => {
         // Обновление отображения приза
         const prize = result.prize.value || "";
         const degree = result.prize.degree;
-        console.log(prize);
+        console.log(`Приз: ${prize}, Угол: ${degree}`);
 
         // Прокрутка
         rotateWheel(degree);
 
-        if (["iphone", "5000", "500"].includes(prize)) {
+        if (["iphone", "5000"].includes(prize)) {
           setTimeout(() => {
             console.log("Модальное окно открыто");
+            if(prize === 'iphone') {              
+              prizeModal.firstChild.nextSibling.classList.add('iphone');
+            }
+            if(prize === '5000') {
+              prizeModal.firstChild.nextSibling.classList.add('prize5000');
+            }
             prizeModal.style.display = "flex";
           }, 7000);
         }
-
-        // document.getElementById(
-        //   "prizeDisplay"
-        // ).innerText = `Вы выиграли - ${prize} ${degree}`;
       } else {
         console.log(result.message);
       }
