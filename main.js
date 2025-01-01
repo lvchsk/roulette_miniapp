@@ -294,7 +294,7 @@ window.addEventListener("load", async () => {
     }
   }
 
-  // btnMinus.addEventListener("click", handleButtonClick);
+  btnMinus.addEventListener("click", handleButtonClick);
   btnMinus.addEventListener("touchstart", handleButtonClick);
 
   document.getElementById("inviteFriendBtn").addEventListener("click", () => {
@@ -325,19 +325,16 @@ window.addEventListener("load", async () => {
   });
 
   function highlightActiveLink() {
-    // Получаем текущий путь URL
     const currentPath = window.location.pathname.replace(
       /^\/Pages\/(.+)/,
       "./$1"
     );
     console.log("Путь: ", currentPath);
 
-    // Список ссылок
     const links = document.querySelectorAll(".menu_item");
     console.log("HREF:", links[0].lastChild.previousSibling.getAttribute("href"));
 
     links.forEach((link) => {
-      // Если href совпадает с текущим путем, добавляем класс "active"
       if (link.lastChild.previousSibling.getAttribute("href") === currentPath) {
         link.classList.add("active");
       } else {
@@ -346,6 +343,5 @@ window.addEventListener("load", async () => {
     });
   }
 
-  // Вызываем функцию при загрузке страницы
   highlightActiveLink();
 });
