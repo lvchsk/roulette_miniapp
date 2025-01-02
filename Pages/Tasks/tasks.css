@@ -60,12 +60,14 @@ body {
 
 .info_container h1 {
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .info_container p {
   margin-bottom: 10px;
   font-size: 12px;
+  font-weight: 300;
   color: gray;
 }
 
@@ -93,6 +95,7 @@ body {
   margin-bottom: 10px;
   margin-right: auto;
   font-size: 12px;
+  font-weight: 300;
   text-align: start;
   color: gray;
 }
@@ -103,6 +106,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.1), 0px 0px 100px 1px rgba(255, 255, 255, 0.1) inset;
+  border-radius: 12px;
 }
 
 .sponsor_info {
@@ -143,7 +148,6 @@ body {
   display: block;
   margin-bottom: 10px;
   width: 100%;
-  align-self: center;
   text-decoration: none;
   color: #ffffff;
   background: linear-gradient(121deg, #d618ff, #ff16ff);
@@ -152,7 +156,7 @@ body {
   border-radius: 8px;
   border: none;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -166,12 +170,12 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(50vh - 80px);
-  /* height: 50vh; */
   padding: 10px 0 0 0;
   box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.1),
     0px 0px 2px 1px rgba(255, 255, 255, 0.1) inset;
+  clip-path: inset(0 0 10px 0);
   border-radius: 16px 16px 0 0;
+  overflow-y: scroll;
 }
 
 .list_container h1 {
@@ -183,7 +187,7 @@ body {
 
 .task-list {
   width: 90%;
-  height: 40vh;
+  /* height: 40vh; */
   max-width: 400px;
   margin: 0 auto;
   padding: 0 20px 0 20px;
@@ -223,12 +227,14 @@ body {
 .task_description h6 {
   margin: 0 0 5px 0;
   font-size: 14px;
+  font-weight: 400;
   text-align: start;
   color: #ffffff;
 }
 
 .task_description p {
   font-size: 12px;
+  font-weight: 300;
   text-align: start;
   color: gray;
 }
@@ -241,6 +247,7 @@ body {
   background: none;
   border-radius: 8px;
   font-size: 14px;
+  font-weight: 400;
   text-align: center;
 }
 
@@ -248,33 +255,32 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 10%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  height: 70px;
   color: white;
   background-color: #1a1a1a;
   border-radius: 12px 12px 0 0;
   border-top: 1px solid #3a3a3a;
-  padding: 2%;
+  padding: 10px;
   text-align: center;
 }
 
-.roulet_btn, .friends_btn, .tasks_btn {
+.roulet_btn,
+.friends_btn,
+.tasks_btn {
   width: 100px;
-  max-height: 70px;
-  min-height: 50px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 5px 15px 5px 15px;
   border-radius: 12px;
   border: none;
   background: none;
 }
 
-.menu_roulette_icon, .menu_friends_icon, .menu_tasks_icon {
+.menu_roulette_icon,
+.menu_friends_icon,
+.menu_tasks_icon {
   width: 20px;
 }
 
@@ -282,6 +288,8 @@ body {
   text-decoration: none;
   text-align: center;
   line-height: 25px;
+  font-size: 14px;
+  font-weight: 500;
   color: #ffffff;
 }
 
