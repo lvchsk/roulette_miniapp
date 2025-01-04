@@ -4,10 +4,10 @@ window.addEventListener("load", async () => {
 
   const giftCooldown = 24 * 60 * 60 * 1000; // 24 часа
 
-  // const initData = tg.initData;
+  const initData = tg.initData;
 
-  const initData =
-    "query_id=AAFnEKlRAAAAAGcQqVFuPynM&user=%7B%22id%22%3A1370034279%2C%22first_name%22%3A%22PUG%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22mad_pug%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FC4P153sbF5ZKQ0bXj61fro_kpL2AtsdVnAeOQ2veP_Y.svg%22%7D&auth_date=1734346396&signature=tkzPFjA-_u5sC8Jn29G8iy3729vIL8fyHHyALY4aVmsnqtNXcCalZzS4GmnglECiEcO1SdHCgFeJDUHyFiPiCg&hash";
+  // const initData =
+  //   "query_id=AAFnEKlRAAAAAGcQqVFuPynM&user=%7B%22id%22%3A1370034279%2C%22first_name%22%3A%22PUG%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22mad_pug%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FC4P153sbF5ZKQ0bXj61fro_kpL2AtsdVnAeOQ2veP_Y.svg%22%7D&auth_date=1734346396&signature=tkzPFjA-_u5sC8Jn29G8iy3729vIL8fyHHyALY4aVmsnqtNXcCalZzS4GmnglECiEcO1SdHCgFeJDUHyFiPiCg&hash";
 
   const loading = document.getElementById("loading");
   loading.style.display = "flex";
@@ -47,8 +47,28 @@ window.addEventListener("load", async () => {
     loading.style.display = "none";
   }
 
+  function getSpinsText(spins) {
+    const remainder10 = spins % 10;
+    const remainder100 = spins % 100;
+  
+    if (remainder100 >= 11 && remainder100 <= 19) {
+      return `${spins} Вращений`;
+    }
+  
+    if (remainder10 === 1) {
+      return `${spins} Вращение`;
+    }
+  
+    if (remainder10 >= 2 && remainder10 <= 4) {
+      return `${spins} Вращения`;
+    }
+  
+    return `${spins} Вращений`;
+  }
+  
+
   function updateSpinsDisplay() {
-    document.getElementById("spinsRemaining").innerText = `${spins} Вращений`;
+    document.getElementById("spinsRemaining").innerText = getSpinsText(spins);
   }
 
   updateSpinsDisplay();
@@ -66,7 +86,7 @@ window.addEventListener("load", async () => {
       freeSpinButton.addEventListener("touchstart", giftHandler);
       timerElement.innerText = "";
       freeSpinButton.disabled = false;
-      freeSpinButton.innerText = "Получить спин";
+      freeSpinButton.innerText = "Получить";
       clearInterval(timerInterval);
     } else {
       // freeSpinButton.removeEventListener("click", giftHandler);
@@ -273,14 +293,25 @@ window.addEventListener("load", async () => {
 
         if (["iphone", "5.000", "500"].includes(prize)) {
           setTimeout(() => {
-            console.log("Модальное окно открыто");
+            const prizeButton = document.getElementById('prizeModalButton');
+            
             if(prize === 'iphone') {   
               prizeModal.firstChild.nextSibling.classList.remove('prize5000');
+              prizeModal.firstChild.nextSibling.classList.remove('500');
               prizeModal.firstChild.nextSibling.classList.add('iphone');
+              prizeButton.href = 'https://onesecgo.ru/stream/iphone_wbprize';
             }
             if(prize === '5.000') {
               prizeModal.firstChild.nextSibling.classList.remove('iphone');
+              prizeModal.firstChild.nextSibling.classList.remove('500');
               prizeModal.firstChild.nextSibling.classList.add('prize5000');
+              prizeButton.href = 'https://onesecgo.ru/stream/5000_wbprize'
+            }
+            if(prize === '500') {
+              prizeModal.firstChild.nextSibling.classList.remove('iphone');
+              prizeModal.firstChild.nextSibling.classList.remove('prize5000');
+              prizeModal.firstChild.nextSibling.classList.add('prize500');
+              prizeButton.style.display = 'none';
             }
             prizeModal.style.display = "flex";
           }, 7000);
