@@ -35,7 +35,6 @@ body {
 }
 
 .info {
-  margin-bottom: 10px;
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -124,8 +123,8 @@ body {
 .wheel-container {
   overflow: hidden;
   position: relative;
-  height: 400px;
   width: 400px;
+  height: 380px;
   box-shadow: 0px 0px 45px 5px rgba(248, 32, 255, 0.2), 0px 0px 45px 5px rgba(248, 32, 255, 0.2) inset;
   border-radius: 50%;
 }
@@ -271,7 +270,6 @@ body {
   justify-content: space-between;
   width: 90%;
   height: 65px;
-  margin-bottom: 5px;
 }
 
 .invite,
@@ -416,6 +414,14 @@ body {
 
 .prize5000 {
   background-image: url(./Photos/prize5000.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
+.prize500 {
+  background-image: url(./Photos/prize500.webp);
   background-size: contain;
   background-repeat: no-repeat;
   width: 300px;
