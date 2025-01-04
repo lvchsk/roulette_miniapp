@@ -412,6 +412,35 @@ body {
   z-index: 1006;
 }
 
+.prize_img {
+  width: 300px;
+  border-radius: 5px;
+}
+
+.iphone {
+  background-image: url(./Photos/prizeIphone.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
+.prize5000 {
+  background-image: url(./Photos/prize5000.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
+.prize500 {
+  background-image: url(./Photos/prize500.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
 .modal-content a {
   height: 40px;
   width: 150px;
