@@ -1,98 +1,155 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <title>Spins & Referrals</title>
-    <!-- Подключаем Telegram WebApp SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Подключаем внешний файл стилей -->
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="info">
-            <div class="coupons">
-                <img class="coupons_icon" src="./Photos/coupons_icon.svg" alt="coupons">
-                <a href="./Pages/Coupons/coupons.html" id="couponsLink">Мои купоны</a>
-            </div>
-            <div class="info-btn">
-                <img class="info_icon" src="./Photos/info_icon.svg" alt="info">
-                <p>
-                    Как играть?
-                </p>
-            </div>
+      <div class="info">
+        <div class="coupons">
+          <img
+            class="coupons_icon"
+            src="./Photos/coupons_icon.svg"
+            alt="coupons"
+          />
+          <a href="./Pages/Coupons/coupons.html" id="couponsLink">Мои купоны</a>
         </div>
-        <div id="loading">Загрузка...</div>
-        <div id="initDataDisplay"></div>
-        <div class="timer-section">
-            <img class="gift" id="gift-img" src="./Photos/gift.png" alt="gift">
-            <button class="gift-btn" id="giftButton">Подарок</button>
+        <div class="info-btn">
+          <img class="info_icon" src="./Photos/info_icon.svg" alt="info" />
+          <p>Как играть?</p>
         </div>
+      </div>
+      <div id="loading">Загрузка...</div>
+      <div id="initDataDisplay"></div>
+      <div class="timer-section">
+        <img class="gift" id="gift-img" src="./Photos/gift.png" alt="gift" />
+        <button class="gift-btn" id="giftButton">Подарок</button>
+      </div>
+      <div class="content-wrapper">
         <div class="wheel-container">
-            <img class="wheel1" id="rotatingWheel" src="./Photos/wheel1.png" alt="wheel">
-            <img class="arrow1" src="/Photos/arrow.png" alt="arrow">
-            <img class="wheel2" id="rotatingWheel2" src="./Photos/wheel2.png" alt="wheel2">
-            <img class="arrow2" src="/Photos/arrow.png" alt="arrow">
-            <img class="wheel3" id="rotatingWheel3" src="./Photos/wheel3.png" alt="wheel3">
-            <img class="arrow3" src="/Photos/arrow.png" alt="arrow">
-            <button class="btn-spin" id="btnMinus" type="button">
-                <img class="btn-spin-img" src="/Photos/play.png" alt="play">
-            </button>
+          <img
+            class="wheel1"
+            id="rotatingWheel"
+            src="./Photos/wheel1.png"
+            alt="wheel"
+          />
+          <img class="arrow1" src="/Photos/arrow.png" alt="arrow" />
+          <img
+            class="wheel2"
+            id="rotatingWheel2"
+            src="./Photos/wheel2.png"
+            alt="wheel2"
+          />
+          <img class="arrow2" src="/Photos/arrow.png" alt="arrow" />
+          <img
+            class="wheel3"
+            id="rotatingWheel3"
+            src="./Photos/wheel3.png"
+            alt="wheel3"
+          />
+          <img class="arrow3" src="/Photos/arrow.png" alt="arrow" />
+          <button class="btn-spin" id="btnMinus" type="button">
+            <img class="btn-spin-img" src="/Photos/play.png" alt="play" />
+          </button>
         </div>
-        <div class="spins-section">
+
+        <div class="info-container">
+          <div class="spins-section">
             <div class="spins-info">
-                <img class="roulette_icon" src="./Photos/roulette_icon.svg" alt="roulette">
-                <h1 class="spins-left" id="spinsRemaining">0 Вращений</h1>
+              <img
+                class="roulette_icon"
+                src="./Photos/roulette_icon.svg"
+                alt="roulette"
+              />
+              <h1 class="spins-left" id="spinsRemaining">0 Вращений</h1>
             </div>
-        </div>
-        <div class="ref-section">
+          </div>
+          <div class="ref-section">
             <div class="invite">
-                <p>Спин за друга</p>
-                <button class="invite-btn" id="inviteFriendBtn">Получить</button>
+              <p>Спин за друга</p>
+              <button class="invite-btn" id="inviteFriendBtn">Получить</button>
             </div>
             <div class="free-spin">
-                <p>Бесплатный спин</p>
-                <button class="free-spin-btn" id="freeSpinButton"><span id="timer"></span></button>
+              <p>Бесплатный спин</p>
+              <button class="free-spin-btn" id="freeSpinButton">
+                <span id="timer"></span>
+              </button>
             </div>
+          </div>
         </div>
+
         <div class="menu">
-            <button onclick="window.location.href='./'" class="menu_item roulet_btn">
-                <img class="menu_roulette_icon" src="./Photos/roulette_icon.svg" alt="roulette">
-                <a href="/" id="homeLink">Рулетка</a>
-            </button>
-            <button onclick="window.location.href='./Pages/Friends/friends.html'" class="menu_item friends_btn">
-                <img class="menu_friends_icon" src="./Photos/friends_icon.svg" alt="friends">
-                <a href="./Pages/Friends/friends.html" id="friendsLink">Друзья</a>
-            </button>
-            <button onclick="window.location.href='./Pages/Tasks/tasks.html'" class="menu_item tasks_btn">
-                <img class="menu_tasks_icon" src="./Photos/tasks_icon.svg" alt="tasks">
-                <a href="./Pages/Tasks/tasks.html" id="tasksLink">Задания</a>
-            </button>
+          <button
+            onclick="window.location.href='./'"
+            class="menu_item roulet_btn"
+          >
+            <img
+              class="menu_roulette_icon"
+              src="./Photos/roulette_icon.svg"
+              alt="roulette"
+            />
+            <a href="/" id="homeLink">Рулетка</a>
+          </button>
+          <button
+            onclick="window.location.href='./Pages/Friends/friends.html'"
+            class="menu_item friends_btn"
+          >
+            <img
+              class="menu_friends_icon"
+              src="./Photos/friends_icon.svg"
+              alt="friends"
+            />
+            <a href="./Pages/Friends/friends.html" id="friendsLink">Друзья</a>
+          </button>
+          <button
+            onclick="window.location.href='./Pages/Tasks/tasks.html'"
+            class="menu_item tasks_btn"
+          >
+            <img
+              class="menu_tasks_icon"
+              src="./Photos/tasks_icon.svg"
+              alt="tasks"
+            />
+            <a href="./Pages/Tasks/tasks.html" id="tasksLink">Задания</a>
+          </button>
         </div>
-        <div id="prizeModal" class="modal">
-            <div class="modal-content">
-                <button class="close-button" id="closePrizeModalButton">&times;</button>
-                <!-- <h2>Вы выиграли!</h2> -->
-                <a id="prizeModalButton" href="https://www.google.ru/" target="_blank">Получить</a>
-            </div>
+      </div>
+      <div id="prizeModal" class="modal">
+        <div class="modal-content">
+          <button class="close-button" id="closePrizeModalButton">
+            &times;
+          </button>
+          <a id="prizeModalButton" href="https://www.google.ru/" target="_blank"
+            >Получить</a
+          >
         </div>
-        <div id="giftModal" class="modal">
-            <div class="gift_modal-content">
-                <button class="close-button" id="closeGiftModalButton">&times;</button>
-                <a href="https://onesecgo.ru/stream/1000_wbprize" target="_blank">Забрать подарок</a>
-            </div>
+      </div>
+      <div id="giftModal" class="modal">
+        <div class="gift_modal-content">
+          <button class="close-button" id="closeGiftModalButton">
+            &times;
+          </button>
+          <a href="https://onesecgo.ru/stream/1000_wbprize" target="_blank"
+            >Забрать подарок</a
+          >
         </div>
-        <div id="responseData" class="response-display"></div>
+      </div>
+      <div id="responseData" class="response-display"></div>
     </div>
     <script src="/main.js"></script>
-</body>
-
+  </body>
 </html>
