@@ -1,21 +1,30 @@
+import { updateSpinsDisplay } from "./Scripts/textHelper.js";
+import { rotateWheel } from "./Scripts/wheel.js";
+import { prizeModals } from "./Scripts/modals.js";
+import { inviteFriend } from "./Scripts/invite.js";
+import { highlightActiveLink } from "./Scripts/highlightLink.js";
+
 window.addEventListener("load", async () => {
   const tg = window.Telegram.WebApp;
   tg.expand();
 
+  
   const giftCooldown = 24 * 60 * 60 * 1000; // 24 часа
-
+  
   // const initData = tg.initData;
-
+  
   const initData =
-    "query_id=AAFnEKlRAAAAAGcQqVFuPynM&user=%7B%22id%22%3A1370034279%2C%22first_name%22%3A%22PUG%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22mad_pug%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FC4P153sbF5ZKQ0bXj61fro_kpL2AtsdVnAeOQ2veP_Y.svg%22%7D&auth_date=1734346396&signature=tkzPFjA-_u5sC8Jn29G8iy3729vIL8fyHHyALY4aVmsnqtNXcCalZzS4GmnglECiEcO1SdHCgFeJDUHyFiPiCg&hash";
-
+  "query_id=AAFnEKlRAAAAAGcQqVFuPynM&user=%7B%22id%22%3A1370034279%2C%22first_name%22%3A%22PUG%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22mad_pug%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FC4P153sbF5ZKQ0bXj61fro_kpL2AtsdVnAeOQ2veP_Y.svg%22%7D&auth_date=1734346396&signature=tkzPFjA-_u5sC8Jn29G8iy3729vIL8fyHHyALY4aVmsnqtNXcCalZzS4GmnglECiEcO1SdHCgFeJDUHyFiPiCg&hash";
+  
   const loading = document.getElementById("loading");
   loading.style.display = "flex";
-
+  
   let spins = 0;
   let referralLink = "";
   let nextGiftTime;
-
+  
+  inviteFriend(tg, referralLink);
+  
   try {
     const response = await fetch("https://bestx.cam/webapp-data", {
       method: "POST",
@@ -47,31 +56,7 @@ window.addEventListener("load", async () => {
     loading.style.display = "none";
   }
 
-  function getSpinsText(spins) {
-    const remainder10 = spins % 10;
-    const remainder100 = spins % 100;
-  
-    if (remainder100 >= 11 && remainder100 <= 19) {
-      return `${spins} Вращений`;
-    }
-  
-    if (remainder10 === 1) {
-      return `${spins} Вращение`;
-    }
-  
-    if (remainder10 >= 2 && remainder10 <= 4) {
-      return `${spins} Вращения`;
-    }
-  
-    return `${spins} Вращений`;
-  }
-  
-
-  function updateSpinsDisplay() {
-    document.getElementById("spinsRemaining").innerText = getSpinsText(spins);
-  }
-
-  updateSpinsDisplay();
+  updateSpinsDisplay(spins);
 
   const freeSpinButton = document.getElementById("freeSpinButton");
   const timerElement = document.getElementById("timer");
@@ -136,122 +121,7 @@ window.addEventListener("load", async () => {
     }
   }
 
-  // Функция вращения
-
-  const wheel = document.getElementById("rotatingWheel");
-  const wheel2 = document.getElementById("rotatingWheel2");
-  const wheel3 = document.getElementById("rotatingWheel3");
-
-  let currentDegree = 0;
-  let currentDegree2 = 0;
-  let currentDegree3 = 0;
-
-  // function rotateWheel(degree) {
-  //   let cum = 360 - degree + 30;
-  //   currentDegree += 360 - (currentDegree % 360) + cum;
-  //   currentDegree2 += 360 - (currentDegree2 % 360) + 60;
-  //   currentDegree3 += 360 - (currentDegree3 % 360) + 60;
-
-  //   function rotateFirst() {
-  //     wheel.style.transform = `rotate(${currentDegree}deg)`;
-  //   }
-  //   function rotateSecond() {
-  //     wheel2.style.transform = `rotate(${currentDegree2}deg)`;
-  //   }
-  //   function rotateThird() {
-  //     wheel3.style.transform = `rotate(${currentDegree3}deg)`;
-  //   }
-  //   setTimeout(rotateFirst, 4000);
-  //   setTimeout(rotateSecond, 2000);
-  //   setTimeout(rotateThird, 200);
-  // }
-  
-  function rotateWheel(degree) {
-    let cum = 360 - degree + 15;
-
-    const duration = 2000;
-    const spins = 3;
-
-    const targetDegree1 = currentDegree + 360 - (currentDegree % 360) + cum + (spins * 360);
-    const targetDegree2 = currentDegree2 + 360 - (currentDegree2 % 360) + 60 + (spins * 360);
-    const targetDegree3 = currentDegree3 + 360 - (currentDegree3 % 360) + 60 + (spins * 360);
-  
-    function rotateThird() {
-      wheel3.style.transition = `transform ${duration}ms ease-out`;
-      wheel3.style.transform = `rotate(${targetDegree3}deg)`;
-      setTimeout(() => {
-        currentDegree3 = targetDegree3;
-        rotateSecond();
-      }, duration);
-    }
-
-    function rotateSecond() {
-      wheel2.style.transition = `transform ${duration}ms ease-out`;
-      wheel2.style.transform = `rotate(${targetDegree2}deg)`;
-      setTimeout(() => {
-        currentDegree2 = targetDegree2;
-        rotateFirst();
-      }, duration);
-    }
-  
-    function rotateFirst() {
-      wheel.style.transition = `transform ${duration}ms ease-out`;
-      wheel.style.transform = `rotate(${targetDegree1}deg)`;
-      setTimeout(() => {
-        currentDegree = targetDegree1;
-      }, duration);
-    }
-  
-    rotateThird();
-  }
-  
-  
-
   const btnMinus = document.getElementById("btnMinus");
-
-  // Модалка призов
-  const prizeModal = document.getElementById("prizeModal");
-  const closePrizeModalButton = document.getElementById(
-    "closePrizeModalButton"
-  );
-
-  closePrizeModalButton.addEventListener("click", () => {
-    prizeModal.style.display = "none";
-  });
-
-  prizeModal.addEventListener("click", (event) => {
-    if (event.target === prizeModal) {
-      prizeModal.style.display = "none";
-    }
-  });
-
-  // Модалка подарка
-  const giftModal = document.getElementById("giftModal");
-  const closeGiftModalButton = document.getElementById("closeGiftModalButton");
-
-  closeGiftModalButton.addEventListener("click", () => {
-    giftModal.style.display = "none";
-  });
-
-  giftModal.addEventListener("click", (event) => {
-    if (event.target === giftModal) {
-      giftModal.style.display = "none";
-    }
-  });
-
-  
-  function openGiftModal() {
-    giftModal.style.display = "flex";
-  }
-  
-  const giftButton = document.getElementById("giftButton");
-  const giftImg = document.getElementById('gift-img');
-
-
-  // giftButton.addEventListener("click", openGiftModal);
-  giftButton.addEventListener("touchstart", openGiftModal);
-  giftImg.addEventListener('touchstart', openGiftModal)
-
 
   async function handleButtonClick() {
     if (btnMinus.disabled) return;
@@ -279,43 +149,16 @@ window.addEventListener("load", async () => {
 
       if (result.success) {
         spins = result.spins;
-        // if (spins === 0) return;
-        spentSpins = result.spentSpins;
-        updateSpinsDisplay();
+        updateSpinsDisplay(spins);
 
         // Обновление отображения приза
         const prize = result.prize.value || "";
         const degree = result.prize.degree;
         console.log(`Приз: ${prize}, Угол: ${degree}`);
 
-        // Прокрутка
         rotateWheel(degree);
+        prizeModals(prize);
 
-        if (["iphone", "5.000", "500"].includes(prize)) {
-          setTimeout(() => {
-            const prizeButton = document.getElementById('prizeModalButton');
-            
-            if(prize === 'iphone') {   
-              prizeModal.firstChild.nextSibling.classList.remove('prize5000');
-              prizeModal.firstChild.nextSibling.classList.remove('500');
-              prizeModal.firstChild.nextSibling.classList.add('iphone');
-              prizeButton.href = 'https://onesecgo.ru/stream/iphone_wbprize';
-            }
-            if(prize === '5.000') {
-              prizeModal.firstChild.nextSibling.classList.remove('iphone');
-              prizeModal.firstChild.nextSibling.classList.remove('500');
-              prizeModal.firstChild.nextSibling.classList.add('prize5000');
-              prizeButton.href = 'https://onesecgo.ru/stream/5000_wbprize'
-            }
-            if(prize === '500') {
-              prizeModal.firstChild.nextSibling.classList.remove('iphone');
-              prizeModal.firstChild.nextSibling.classList.remove('prize5000');
-              prizeModal.firstChild.nextSibling.classList.add('prize500');
-              prizeButton.style.display = 'none';
-            }
-            prizeModal.style.display = "flex";
-          }, 7000);
-        }
       } else {
         console.log(result.message);
       }
@@ -328,51 +171,10 @@ window.addEventListener("load", async () => {
   btnMinus.addEventListener("click", handleButtonClick);
   btnMinus.addEventListener("touchstart", handleButtonClick);
 
-  document.getElementById("inviteFriendBtn").addEventListener("click", () => {
-    if (tg.openContactPicker) {
-      tg.openContactPicker({
-        message: `Переходи по ссылке в лучшую Telegram рулетку, вращай и получай купоны от 500₽ до 30000₽ на WB: ${referralLink}`,
-      })
-        .then((result) => {
-          if (result && result.contacts) {
-            alert(`Сообщение отправлено ${result.contacts.length} контактам!`);
-          } else {
-            alert("Отмена выбора контактов.");
-          }
-        })
-        .catch((error) => {
-          console.error("Ошибка при открытии контакт-пикера:", error);
-          alert("Не удалось открыть список контактов.");
-        });
-    } else {
-      const message = encodeURIComponent(
-        `Переходи по ссылке в лучшую Telegram рулетку, вращай и получай купоны от 500₽ до 30000₽ на WB:`
-      );
-      window.open(
-        `https://t.me/share/url?url=${referralLink}&text=${message}`,
-        "_blank"
-      );
-    }
-  });
+  const currentPath = window.location.pathname.replace(
+    /^\/Pages\/(.+)/,
+    "./$1"
+  );
 
-  function highlightActiveLink() {
-    const currentPath = window.location.pathname.replace(
-      /^\/Pages\/(.+)/,
-      "./$1"
-    );
-    console.log("Путь: ", currentPath);
-
-    const links = document.querySelectorAll(".menu_item");
-    console.log("HREF:", links[0].lastChild.previousSibling.getAttribute("href"));
-
-    links.forEach((link) => {
-      if (link.lastChild.previousSibling.getAttribute("href") === currentPath) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
-    });
-  }
-
-  highlightActiveLink();
+  highlightActiveLink(currentPath);
 });

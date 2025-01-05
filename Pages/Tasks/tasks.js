@@ -1,3 +1,5 @@
+import { highlightActiveLink } from "../../Scripts/highlightLink.js";
+
 window.addEventListener("load", async () => {
   const tg = window.Telegram.WebApp;
   const initData = tg.initData;
@@ -75,25 +77,10 @@ window.addEventListener("load", async () => {
 
   fetchTasks();
 
-  function highlightActiveLink() {
-    const currentPath = window.location.pathname.replace(
-      /^\/Pages\/.+\/(.+)/,
-      "./$1"
-    );
-    const links = document.querySelectorAll(".menu_item");
-    console.log(
-      "HREF:",
-      links[0].lastChild.previousSibling.getAttribute("href")
-    );
+  const currentPath = window.location.pathname.replace(
+    /^\/Pages\/.+\/(.+)/,
+    "./$1"
+  );
 
-    links.forEach((link) => {
-      if (link.lastChild.previousSibling.getAttribute("href") === currentPath) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
-    });
-  }
-
-  highlightActiveLink();
+  highlightActiveLink(currentPath);
 });
