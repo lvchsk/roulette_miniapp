@@ -1,6 +1,3 @@
-console.log('<-------WHEEL FILE------->');
-
-
 const wheel = document.getElementById("rotatingWheel");
 const wheel2 = document.getElementById("rotatingWheel2");
 const wheel3 = document.getElementById("rotatingWheel3");
