@@ -40,7 +40,15 @@ export async function getGift(initData) {
     }
 
     const result = await response.json();
-    return result;
+    if (result.success) {
+      console.log(result);
+      console.log('Фриспин получен');
+      
+    } else {
+      console.log(result.message);
+      console.log('Фриспин не получен');
+      
+    }
   } catch (error) {
     console.error("Ошибка при запросе подарка:", error);
     alert("Ошибка при запросе подарка. Попробуйте позже.");
@@ -62,7 +70,11 @@ export async function updateSpins(initData) {
     }
 
     const result = await resp.json();
-    return result;
+    if (result.success) {
+      return result;
+    } else {
+      console.log(result.message);
+    }
   } catch (error) {
     console.error("Ошибка при уменьшении спинов:", error);
     alert("Ошибка при уменьшении спинов. Попробуйте позже.");

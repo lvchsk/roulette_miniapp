@@ -1,5 +1,3 @@
-const inviteBtn = document.getElementById("inviteFriendBtn");
-
 export function inviteFriend(tg, referralLink) {
     if (tg.openContactPicker) {
         tg.openContactPicker({
@@ -26,5 +24,3 @@ export function inviteFriend(tg, referralLink) {
         );
       }
 }
-
-inviteBtn.addEventListener('click', inviteFriend)

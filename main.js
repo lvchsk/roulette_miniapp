@@ -18,10 +18,13 @@ window.addEventListener("load", async () => {
   const loading = document.getElementById("loading");
   loading.style.display = "flex";
 
+  let spins = 0;
+  let referralLink = "";
+
   const data = await getData(initData);
 
-  let spins = data.spins;
-  let referralLink = data.referralLink;
+  spins = data.spins;
+  referralLink = data.referralLink;
 
   const giftCooldown = 24 * 60 * 60 * 1000; // 24 часа
 
@@ -30,7 +33,9 @@ window.addEventListener("load", async () => {
   const registrationDate = new Date(`${year}-${month}-${day}T${timePart}`);
   let nextGiftTime = new Date(registrationDate.getTime() + giftCooldown);
 
-  inviteFriend(tg, referralLink);
+  const inviteBtn = document.getElementById("inviteFriendBtn");
+  inviteBtn.addEventListener("click", () => inviteFriend(tg, referralLink));
+
   updateSpinsDisplay(spins);
 
   const freeSpinButton = document.getElementById("freeSpinButton");
@@ -64,15 +69,23 @@ window.addEventListener("load", async () => {
   updateTimer();
 
   async function giftHandler() {
-    const result = await getGift(initData);
-    if (result.success) {
+    try {
+      await getGift(initData);
+
       nextGiftTime = new Date(new Date().getTime() + giftCooldown);
       spins += 1;
-      updateSpinsDisplay();
+      updateSpinsDisplay(spins);
+
       freeSpinButton.disabled = true;
+      freeSpinButton.classList.add("disabled_btn");
+      timerElement.classList.add("disabled_timer");
+
       clearInterval(timerInterval);
-      setInterval(updateTimer, 1000);
       updateTimer();
+      setInterval(updateTimer, 1000);
+    } catch (error) {
+      console.error("Ошибка при получении подарка:", error);
+      alert("Не удалось получить подарок. Попробуйте снова.");
     }
   }
 
@@ -88,21 +101,17 @@ window.addEventListener("load", async () => {
       console.log("Кнопка снова активна");
     }, 7500);
 
-    const result = updateSpins(initData);
+    const result = await updateSpins(initData);
 
-    if (result.success) {
-      spins = result.spins;
-      updateSpinsDisplay(spins);
+    spins = result.spins;
+    updateSpinsDisplay(spins);
 
-      const prize = result.prize.value || "";
-      const degree = result.prize.degree;
-      console.log(`Приз: ${prize}, Угол: ${degree}`);
+    const prize = result.prize.value || "";
+    const degree = result.prize.degree;
+    console.log(`Приз: ${prize}, Угол: ${degree}`);
 
-      rotateWheel(degree);
-      prizeModals(prize);
-    } else {
-      console.log(result.message);
-    }
+    rotateWheel(degree);
+    prizeModals(prize);
   }
 
   btnMinus.addEventListener("click", handleButtonClick);

@@ -32,12 +32,15 @@ window.addEventListener("load", async () => {
   document.getElementById("spinsCount").innerText = `${spins}`;
   document.getElementById("referralsCount").innerText = referralList.length;
 
-  inviteFriend(tg, referralLink);
+  const inviteBtn = document.getElementById("inviteFriendBtn");
+  inviteBtn.addEventListener("click", () => inviteFriend(tg, referralLink));
 
   const textToCopy = referralLinkElement.innerText;
   const notification = document.getElementById("copyNotification");
 
-  referralLinkElement.addEventListener("click", () => copyText(textToCopy, notification));
+  referralLinkElement.addEventListener("click", () =>
+    copyText(textToCopy, notification)
+  );
 
   function displayFriends(refferals) {
     refferalsList.innerHTML = "";
