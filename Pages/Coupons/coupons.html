@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="./coupons.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,11 +13,12 @@
     <title>Купоны</title>
 </head>
 <body>
+    <div id="loading">Загрузка...</div>
     <div class="container" id="container">
         <div class="info_container">
             <a class="back" href="../../" id="homeLink">&times;</a>
             <div class="info_user">
-                <h1 class="info_user_name">PUG</h1>
+                <h1 class="info_user_name" id="userName">PUG</h1>
                 <h5>Всего купонов</h5>
                 <h1 class="info_user_coupons" id="count">0</h1>
             </div>
@@ -32,6 +33,6 @@
         </div>
         <div id="copyNotification" class="hidden">Купон скопирован!</div>
     </div>
-    <script src="./coupons.js"></script>
+    <script type="module" src="./coupons.js"></script>
 </body>
 </html>

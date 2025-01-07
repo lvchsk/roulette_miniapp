@@ -1,22 +1,25 @@
-console.log('<-------MODALS FILE------>');
-
-
 // Модалка подарка
 const giftModal = document.getElementById("giftModal");
 const closeGiftModalButton = document.getElementById("closeGiftModalButton");
 
 closeGiftModalButton.addEventListener("click", () => {
-  giftModal.style.display = "none";
+  // giftModal.style.display = "none";
+  giftModal.style.visibility = 'hidden'
+  giftModal.style.opacity = '0'
 });
 
 giftModal.addEventListener("click", (event) => {
   if (event.target === giftModal) {
-    giftModal.style.display = "none";
+    // giftModal.style.display = "none";
+    giftModal.style.visibility = 'hidden'
+    giftModal.style.opacity = '0'
   }
 });
 
 function openGiftModal() {
-  giftModal.style.display = "flex";
+  giftModal.style.visibility = 'visible'
+  giftModal.style.opacity = '1'
+  // giftModal.style.display = "flex";
 }
 
 const giftButton = document.getElementById("giftButton");

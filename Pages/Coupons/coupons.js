@@ -1,3 +1,6 @@
+import { getData } from "../../Scripts/api.js";
+import { copyText } from "../../Scripts/textHelper.js";
+
 window.addEventListener("load", async () => {
   const tg = window.Telegram.WebApp;
   const initData = tg.initData;
@@ -7,41 +10,29 @@ window.addEventListener("load", async () => {
 
   tg.expand();
 
-  const count = document.getElementById('count')
-  count.innerText = '0'
+  const loading = document.getElementById("loading");
+  loading.style.display = "flex";
+
+  const userName = 'Anonymus' ?? tg.initDataUnsafe.user.first_name;
+  const userNameElement = document.getElementById('userName')
+  userNameElement.innerText = userName
+
+  const count = document.getElementById("count");
+  count.innerText = "0";
   const container = document.getElementById("container");
+  const couponsList = document.getElementById("couponsList");
 
   container.style.overflow = "auto";
   container.style.position = "absolute";
 
-  try {
-    const response = await fetch("https://bestx.cam/webapp-data", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ initData }),
-    });
+  const data = await getData(initData);
+  
 
-    if (!response.ok) {
-      throw new Error(`Server returned code ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log(data);
-
-    if (data.success) {
-      const coupons = data.codes;
-      count.innerText = data.codes.length
-      displayCoupons(coupons);
-    }
-  } catch (err) {
-    console.error("Ошибка при получении данных:", err);
-    alert("Ошибка при загрузке данных. Попробуйте позже.");
-  }
+  const coupons = data.codes;
+  count.innerText = data.codes.length;
+  displayCoupons(coupons);
 
   function displayCoupons(coupons) {
-    const couponsList = document.getElementById("couponsList");
     couponsList.innerHTML = "";
 
     coupons.forEach((coupon) => {
@@ -60,42 +51,10 @@ window.addEventListener("load", async () => {
       copyButton.id = "copyLinkBtn";
       card.appendChild(copyButton);
 
-      copyButton.addEventListener("click", async () => {
-        const textToCopy = coupon;
-        const notification = document.getElementById("copyNotification");
-  
-        try {
-          await navigator.clipboard.writeText(textToCopy);
-  
-          notification.textContent = "Ссылка скопирована!";
-          notification.classList.add("show");
-          notification.classList.remove("hidden");
-  
-          setTimeout(() => {
-            notification.classList.remove("show");
-          }, 3000);
-        } catch (err) {
-          console.error("Ошибка при копировании ссылки:", err);
-  
-          notification.textContent = "Ошибка при копировании.";
-          notification.classList.add("show");
-          notification.classList.remove("hidden");
-  
-          setTimeout(() => {
-            notification.classList.remove("show");
-          }, 3000);
-        }
-      });
-
-      // copyButton.addEventListener("click", async () => {
-      //   try {
-      //     await navigator.clipboard.writeText(coupon);
-      //     alert("Купон скопирован: " + coupon);
-      //   } catch (err) {
-      //     console.error("Ошибка при копировании:", err);
-      //     alert("Ошибка при копировании.");
-      //   }
-      // });
+      const textToCopy = coupon;
+      const notification = document.getElementById("copyNotification");
+      
+      copyButton.addEventListener("click", () => copyText(textToCopy, notification));
     });
   }
 });
