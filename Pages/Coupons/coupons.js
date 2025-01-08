@@ -3,21 +3,21 @@ import { copyText } from "../../Scripts/textHelper.js";
 
 window.addEventListener("load", async () => {
   const tg = window.Telegram.WebApp;
-  const initData = tg.initData;
+  // const initData = tg.initData;
+  const user = tg.initDataUnsafe.user;
+  // const user = {}
 
-  // const initData =
-  //   "query_id=AAFnEKlRAAAAAGcQqVFuPynM&user=%7B%22id%22%3A1370034279%2C%22first_name%22%3A%22PUG%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22mad_pug%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FC4P153sbF5ZKQ0bXj61fro_kpL2AtsdVnAeOQ2veP_Y.svg%22%7D&auth_date=1734346396&signature=tkzPFjA-_u5sC8Jn29G8iy3729vIL8fyHHyALY4aVmsnqtNXcCalZzS4GmnglECiEcO1SdHCgFeJDUHyFiPiCg&hash";
+  const initData =
+    "query_id=AAFnEKlRAAAAAGcQqVFuPynM&user=%7B%22id%22%3A1370034279%2C%22first_name%22%3A%22PUG%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22mad_pug%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FC4P153sbF5ZKQ0bXj61fro_kpL2AtsdVnAeOQ2veP_Y.svg%22%7D&auth_date=1734346396&signature=tkzPFjA-_u5sC8Jn29G8iy3729vIL8fyHHyALY4aVmsnqtNXcCalZzS4GmnglECiEcO1SdHCgFeJDUHyFiPiCg&hash";
 
   tg.expand();
-  alert(tg.platform)
-  
 
   const loading = document.getElementById("loading");
   loading.style.display = "flex";
 
-  const userName = 'Anonymus' ?? `${tg.initDataUnsafe.user.first_name}`;
-  const userNameElement = document.getElementById('userName')
-  userNameElement.innerText = userName
+  const userName = user?.first_name ?? "Anonymous";
+  const userNameElement = document.getElementById("userName");
+  userNameElement.innerText = userName;
 
   const count = document.getElementById("count");
   count.innerText = "0";
@@ -28,7 +28,6 @@ window.addEventListener("load", async () => {
   container.style.position = "absolute";
 
   const data = await getData(initData);
-  
 
   const coupons = data.codes;
   count.innerText = data.codes.length;
@@ -55,8 +54,10 @@ window.addEventListener("load", async () => {
 
       const textToCopy = coupon;
       const notification = document.getElementById("copyNotification");
-      
-      copyButton.addEventListener("click", () => copyText(textToCopy, notification));
+
+      copyButton.addEventListener("click", () =>
+        copyText(textToCopy, notification)
+      );
     });
   }
 });
