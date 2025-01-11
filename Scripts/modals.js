@@ -2,13 +2,13 @@
 const giftModal = document.getElementById("giftModal");
 const closeGiftModalButton = document.getElementById("closeGiftModalButton");
 
-closeGiftModalButton.addEventListener("click", () => {
+closeGiftModalButton.addEventListener("pointerdown", () => {
   // giftModal.style.display = "none";
   giftModal.style.visibility = "hidden";
   giftModal.style.opacity = "0";
 });
 
-giftModal.addEventListener("click", (event) => {
+giftModal.addEventListener("pointerdown", (event) => {
   if (event.target === giftModal) {
     // giftModal.style.display = "none";
     giftModal.style.visibility = "hidden";
@@ -26,21 +26,21 @@ const giftButton = document.getElementById("giftButton");
 const giftImg = document.getElementById("gift-img");
 
 // giftButton.addEventListener("click", openGiftModal);
-giftButton.addEventListener("touchstart", openGiftModal);
-giftImg.addEventListener("touchstart", openGiftModal);
+giftButton.addEventListener("pointerdown", openGiftModal);
+giftImg.addEventListener("pointerdown", openGiftModal);
 
 // Модалка призов
 const prizeModal = document.getElementById("prizeModal");
 const closePrizeModalButton = document.getElementById("closePrizeModalButton");
 const modalContent = document.getElementById("modalContent");
 
-closePrizeModalButton.addEventListener("click", () => {
+closePrizeModalButton.addEventListener("pointerdown", () => {
   prizeModal.style.visibility = "hidden";
   prizeModal.style.opacity = "0";
   // prizeModal.style.display = "none";
 });
 
-prizeModal.addEventListener("click", (event) => {
+prizeModal.addEventListener("pointerdown", (event) => {
   if (event.target === prizeModal) {
     prizeModal.style.visibility = "hidden";
     prizeModal.style.opacity = "0";
@@ -48,7 +48,7 @@ prizeModal.addEventListener("click", (event) => {
   }
 });
 
-export function prizeModals(prize) {
+export function prizeModals(prize, link) {
   if (["iphone", "5.000", "500"].includes(prize)) {
     setTimeout(() => {
       const prizeButton = document.getElementById("prizeModalButton");
@@ -56,15 +56,17 @@ export function prizeModals(prize) {
 
       if (prize === "iphone") {
         modalContent.classList.remove("prize5000");
-        modalContent.classList.remove("500");
+        modalContent.classList.remove("prize500");
         modalContent.classList.add("iphone");
-        prizeButton.href = "https://onesecgo.ru/stream/iphone_wbprize";
+        prizeButton.href = link;
+        prizeButton.style.display = "block";
       }
       if (prize === "5.000") {
         modalContent.classList.remove("iphone");
-        modalContent.classList.remove("500");
+        modalContent.classList.remove("prize500");
         modalContent.classList.add("prize5000");
-        prizeButton.href = "https://onesecgo.ru/stream/5000_wbprize";
+        prizeButton.href = link;
+        prizeButton.style.display = "block";
       }
       if (prize === "500") {
         modalContent.classList.remove("iphone");
@@ -75,6 +77,6 @@ export function prizeModals(prize) {
       prizeModal.style.visibility = "visible";
       prizeModal.style.opacity = "1";
       // prizeModal.style.display = "flex";
-    }, 7000);
+    }, 9500);
   }
 }

@@ -55,7 +55,7 @@ window.addEventListener("load", async () => {
       const textToCopy = coupon;
       const notification = document.getElementById("copyNotification");
 
-      copyButton.addEventListener("click", () =>
+      copyButton.addEventListener("pointerdown", () =>
         copyText(textToCopy, notification)
       );
     });

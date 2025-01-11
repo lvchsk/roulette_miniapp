@@ -193,6 +193,7 @@ body {
   border: none;
   background: none;
   cursor: pointer;
+  touch-action: manipulation;
   z-index: 1003;
 }
 

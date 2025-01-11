@@ -33,12 +33,12 @@ window.addEventListener("load", async () => {
   document.getElementById("referralsCount").innerText = referralList.length;
 
   const inviteBtn = document.getElementById("inviteFriendBtn");
-  inviteBtn.addEventListener("click", () => inviteFriend(tg, referralLink));
+  inviteBtn.addEventListener("pointerdown", () => inviteFriend(tg, referralLink));
 
   const textToCopy = referralLinkElement.innerText;
   const notification = document.getElementById("copyNotification");
 
-  referralLinkElement.addEventListener("click", () =>
+  referralLinkElement.addEventListener("pointerdown", () =>
     copyText(textToCopy, notification)
   );
 

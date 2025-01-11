@@ -9,7 +9,7 @@ let currentDegree3 = 0;
 export function rotateWheel(degree) {
   let cum = 360 - degree + 15;
 
-  const duration = 2000;
+  const duration = 3000;
   const spins = 3;
 
   const targetDegree1 =
