@@ -33,7 +33,6 @@ body {
   position: relative;
 }
 
-
 .content-wrapper {
   margin-top: 20px;
   display: flex;
@@ -303,7 +302,7 @@ body {
 .invite p,
 .free-spin p {
   margin: 0 0 5px 0;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .invite-btn,
@@ -592,6 +591,11 @@ body {
   }
   .coupons,
   .info-btn {
+    font-size: 10px;
+  }
+  .invite p,
+  .free-spin p {
+    margin: 0 0 5px 0;
     font-size: 10px;
   }
 }
