@@ -1,6 +1,10 @@
 import { updateSpinsDisplay } from "./Scripts/textHelper.js";
 import { rotateWheel } from "./Scripts/wheel.js";
-import { openWarningModal, openWelcomeModal, prizeModals } from "./Scripts/modals.js";
+import {
+  openWarningModal,
+  openWelcomeModal,
+  prizeModals,
+} from "./Scripts/modals.js";
 import { inviteFriend } from "./Scripts/invite.js";
 import { highlightActiveLink } from "./Scripts/highlightLink.js";
 import { getData, updateSpins } from "./Scripts/api.js";
@@ -22,9 +26,10 @@ window.addEventListener("load", async () => {
   console.log(data);
 
   openWelcomeModal(data.spentSpins);
-  
-  const balanceText = document.getElementById('balance');
-  balanceText.innerText = `Баланс: ${data.balance}`;
+
+  const balanceText = document.getElementById("balance");
+  let balance = data.balance;
+  balanceText.innerText = `Баланс: ${balance}`;
 
   spins = data.spins;
   referralLink = data.referralLink;
@@ -105,34 +110,38 @@ window.addEventListener("load", async () => {
     }, 4600);
 
     const result = await updateSpins(initData);
-    console.log(result);
-    
+    console.log(result, "JOPA");
 
     spins = result.spins;
+    if (spins === 0) {
+      btnMinus.removeEventListener("pointerdown", handleButtonClick);
+      btnMinus.addEventListener("pointerdown", openWarningModal);
+    }
     updateSpinsDisplay(spins);
 
-    const prize = result.prize.value || "";
-    const degree = result.prize.degree;
-    const link = result.prize.link;
-    console.log(`Приз: ${prize}, Угол: ${degree}`);
+    const prize = result.prize?.value || "";
+    const degree = result.prize?.degree;
+    const link = result.prize?.link;
+    const actualBalance = result.balance;
+    console.log(`Приз: ${prize}, Угол: ${degree}, Баланс: ${actualBalance}`);
 
     rotateWheel(degree);
-    prizeModals(prize, link);
-    if (result.prize.value === 'spin') {
-      const data = await getData(initData);
-      spins = data.spins;
+    prizeModals(prize, link, actualBalance);
+    if (result.prize?.value === "spin") {
+      const actualData = await getData(initData);
+      spins = actualData.spins;
       setTimeout(() => {
-        updateSpinsDisplay(spins)
-      }, 5000)
+        updateSpinsDisplay(spins);
+      }, 4000);
     }
   }
 
   if (spins !== 0) {
-    btnMinus.removeEventListener('pointerdown', openWarningModal)
-    btnMinus.addEventListener('pointerdown', handleButtonClick);
+    btnMinus.removeEventListener("pointerdown", openWarningModal);
+    btnMinus.addEventListener("pointerdown", handleButtonClick);
   } else {
-    btnMinus.removeEventListener('pointerdown', handleButtonClick)
-    btnMinus.addEventListener('pointerdown', openWarningModal);
+    btnMinus.removeEventListener("pointerdown", handleButtonClick);
+    btnMinus.addEventListener("pointerdown", openWarningModal);
   }
 
   const currentPath = window.location.pathname.replace(

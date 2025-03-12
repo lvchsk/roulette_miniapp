@@ -551,12 +551,13 @@ body {
   background-repeat: no-repeat;
 }
 
-.welcome_modal-content a {
+.welcome_modal-content button {
   position: absolute;
   bottom: 0;
   left: 50px;
   width: 200px;
   margin-bottom: 5px;
+  border: none;
   border-radius: 16px;
   text-decoration: none;
   line-height: 40px;
@@ -582,12 +583,13 @@ body {
   background-repeat: no-repeat;
 }
 
-.warning_modal-content a {
+.warning_modal-content button {
   position: absolute;
   bottom: 0;
   left: 50px;
   width: 200px;
   margin-bottom: 50px;
+  border: none;
   border-radius: 16px;
   text-decoration: none;
   line-height: 40px;
