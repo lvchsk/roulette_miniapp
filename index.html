@@ -21,12 +21,13 @@
     <div class="container">
       <div class="info">
         <div class="coupons">
-          <img
+          <!-- <img
             class="coupons_icon"
             src="./Photos/coupons_icon.svg"
             alt="coupons"
           />
-          <a href="./Pages/Coupons/coupons.html" id="couponsLink">Мои купоны</a>
+          <a href="./Pages/Coupons/coupons.html" id="couponsLink">Мои купоны</a> -->
+          <p id="balance">Баланс: 0</p>
         </div>
         <div class="info-btn">
           <img class="info_icon" src="./Photos/info_icon.svg" alt="info" />
@@ -44,11 +45,11 @@
           <img
             class="wheel1"
             id="rotatingWheel"
-            src="./Photos/wheel1.webp"
+            src="./Photos/wheel_rework.webp"
             alt="wheel"
           />
           <img class="arrow1" src="/Photos/arrow.webp" alt="arrow" />
-          <img
+          <!-- <img
             class="wheel2"
             id="rotatingWheel2"
             src="./Photos/wheel2.webp"
@@ -61,7 +62,7 @@
             src="./Photos/wheel3.webp"
             alt="wheel3"
           />
-          <img class="arrow3" src="/Photos/arrow.webp" alt="arrow" />
+          <img class="arrow3" src="/Photos/arrow.webp" alt="arrow" /> -->
           <button class="btn-spin" id="btnMinus" type="button">
             <img class="btn-spin-img" src="/Photos/play.webp" alt="play" />
           </button>
@@ -148,6 +149,26 @@
           >
         </div>
       </div>
+      <div id="welcomeModal" class="modal">
+        <div class="welcome_modal-content">
+          <button class="close-button" id="closeWelcomeModalButton">
+            &times;
+          </button>
+          <a href="#"
+            >Крутить</a
+          >
+        </div>
+        </div>
+        <div id="warningModal" class="modal">
+          <div class="warning_modal-content">
+            <button class="close-button" id="closeWarningModalButton">
+              &times;
+            </button>
+            <a href="#"
+              >Понял</a
+            >
+          </div>
+          </div>
       <div id="responseData" class="response-display"></div>
     </div>
     <script type="module" src="/main.js"></script>

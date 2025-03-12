@@ -1,6 +1,6 @@
 import { updateSpinsDisplay } from "./Scripts/textHelper.js";
 import { rotateWheel } from "./Scripts/wheel.js";
-import { prizeModals } from "./Scripts/modals.js";
+import { openWarningModal, openWelcomeModal, prizeModals } from "./Scripts/modals.js";
 import { inviteFriend } from "./Scripts/invite.js";
 import { highlightActiveLink } from "./Scripts/highlightLink.js";
 import { getData, updateSpins } from "./Scripts/api.js";
@@ -21,6 +21,12 @@ window.addEventListener("load", async () => {
   let referralLink = "";
 
   const data = await getData(initData);
+  console.log(data);
+
+  openWelcomeModal(data.spentSpins);
+  
+  const balanceText = document.getElementById('balance');
+  balanceText.innerText = `Баланс: ${data.balance}`;
 
   spins = data.spins;
   referralLink = data.referralLink;
@@ -98,7 +104,7 @@ window.addEventListener("load", async () => {
     setTimeout(() => {
       btnMinus.disabled = false;
       console.log("Кнопка снова активна");
-    }, 9600);
+    }, 4600);
 
     const result = await updateSpins(initData);
     console.log(result);
@@ -114,11 +120,22 @@ window.addEventListener("load", async () => {
 
     rotateWheel(degree);
     prizeModals(prize, link);
+    if (result.prize.value === 'spin') {
+      const data = await getData(initData);
+      spins = data.spins;
+      setTimeout(() => {
+        updateSpinsDisplay(spins)
+      }, 5000)
+    }
   }
 
-  // btnMinus.addEventListener("click", handleButtonClick);
-  // btnMinus.addEventListener("touchstart", handleButtonClick);
-  btnMinus.addEventListener('pointerdown', handleButtonClick);
+  if (spins !== 0) {
+    btnMinus.removeEventListener('pointerdown', openWarningModal)
+    btnMinus.addEventListener('pointerdown', handleButtonClick);
+  } else {
+    btnMinus.removeEventListener('pointerdown', handleButtonClick)
+    btnMinus.addEventListener('pointerdown', openWarningModal);
+  }
 
   const currentPath = window.location.pathname.replace(
     /^\/Pages\/(.+)/,

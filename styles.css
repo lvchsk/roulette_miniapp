@@ -136,7 +136,7 @@ body {
 .wheel-container {
   overflow: hidden;
   position: relative;
-  width: 400px;
+  width: 380px;
   height: 380px;
   box-shadow: 0px 0px 45px 5px rgba(248, 32, 255, 0.2),
     0px 0px 45px 5px rgba(248, 32, 255, 0.2) inset;
@@ -146,7 +146,7 @@ body {
 .wheel1 {
   position: absolute;
   top: 0;
-  left: 10px;
+  left: 0;
   width: 380px;
   height: 380px;
   border-radius: 50%;
@@ -183,10 +183,10 @@ body {
 
 .btn-spin {
   position: absolute;
-  top: 152px;
-  left: 162px;
-  width: 75px;
-  height: 75px;
+  top: 33%;
+  left: 33%;
+  width: 130px;
+  height: 130px;
   padding: 0;
   border-radius: 50%;
   border: none;
@@ -197,8 +197,8 @@ body {
 }
 
 .btn-spin-img {
-  width: 75px;
-  height: 75px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   box-shadow: 0px 3px 10px 2px rgba(73, 37, 74, 0.2),
     0px 0px 10px 5px rgba(73, 37, 74, 0.2) inset;
@@ -206,18 +206,18 @@ body {
 }
 
 .arrow1 {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 45px;
   position: absolute;
-  top: 55px;
-  left: 190px;
+  top: 25%;
+  left: 45%;
   border-radius: 50%;
   box-shadow: 0px 3px 10px 7px rgba(255, 158, 12, 0.52),
     0px 0px 10px 5px rgba(255, 158, 12, 0.52) inset;
   z-index: 1001;
 }
 
-.arrow2 {
+/* .arrow2 {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -239,7 +239,7 @@ body {
   box-shadow: 0px 3px 10px 7px rgba(255, 158, 12, 0.52),
     0px 0px 10px 5px rgba(255, 158, 12, 0.52) inset;
   z-index: 1003;
-}
+} */
 
 .info-container {
   display: flex;
@@ -434,8 +434,40 @@ body {
   height: 300px;
 }
 
-.prize500 {
-  background-image: url(./Photos/prize500.webp);
+.star10 {
+  background-image: url(./Photos/star10.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
+.star50 {
+  background-image: url(./Photos/star50.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
+.star100 {
+  background-image: url(./Photos/star100.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
+.star300 {
+  background-image: url(./Photos/star300.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
+.spin {
+  background-image: url(./Photos/spin_prize.webp);
   background-size: contain;
   background-repeat: no-repeat;
   width: 300px;
@@ -502,6 +534,68 @@ body {
   background-color: #ff40d4;
 }
 
+.welcome_modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #202020;
+  position: relative;
+  background-image: url(./Photos/welcome.webp);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.welcome_modal-content a {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  width: 200px;
+  margin-bottom: 5px;
+  border-radius: 16px;
+  text-decoration: none;
+  line-height: 40px;
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #ff40d4;
+}
+
+.warning_modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #202020;
+  position: relative;
+  background-image: url(./Photos/warning.webp);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.warning_modal-content a {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  width: 200px;
+  margin-bottom: 50px;
+  border-radius: 16px;
+  text-decoration: none;
+  line-height: 40px;
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #ff40d4;
+}
+
 @media (max-width: 400px) {
   .gift-section {
     top: 40px;
@@ -544,22 +638,22 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 120px;
   }
   .btn-spin-img {
-    width: 55px;
-    height: 55px;
+    width: 120px;
+    height: 120px;
   }
   .arrow1,
   .arrow2,
   .arrow3 {
     width: 8%;
-    height: 8%;
+    height: 10%;
     border-radius: 50%;
   }
   .arrow1 {
-    top: 15%;
+    top: 25%;
     left: 46%;
   }
   .arrow2 {
@@ -573,8 +667,8 @@ body {
 }
 @media (max-width: 350px) {
   .btn-spin-img {
-    width: 47px;
-    height: 47px;
+    width: 100px;
+    height: 100px;
   }
   .gift {
     width: 40px;
@@ -586,8 +680,8 @@ body {
 
 @media (max-width: 300px) {
   .btn-spin-img {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
   }
   .coupons,
   .info-btn {
