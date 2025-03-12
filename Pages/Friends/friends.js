@@ -24,6 +24,8 @@ window.addEventListener("load", async () => {
   let referralLink = `https://t.me/${data.botUsername}?start=${data.referralCode}`;
   const referralList = data.referralList;
 
+  console.log(referralList);
+
   displayFriends(referralList);
 
   referralLinkElement.innerText = referralLink;
@@ -42,8 +44,10 @@ window.addEventListener("load", async () => {
 
   function displayFriends(refferals) {
     refferalsList.innerHTML = "";
-
     refferals.forEach((refferal) => {
+
+      console.log(refferal);
+      
       const refferalCard = document.createElement("div");
       refferalCard.classList.add("refferal-card");
 
@@ -59,13 +63,17 @@ window.addEventListener("load", async () => {
       refferalCard.appendChild(iconContainer);
 
       const refferalItem = document.createElement("p");
-      refferalItem.textContent = refferal;
+      refferalItem.textContent = refferal.username;
       refferalItem.id = "refferal";
       refferalCard.appendChild(refferalItem);
 
       const infoSpan = document.createElement("span");
       infoSpan.classList.add("info-span");
-      infoSpan.innerText = "+1ВР";
+      if (refferal.status) {
+        infoSpan.textContent = "+1ВР +10⭐️";
+      } else {
+        infoSpan.textContent = "";
+      }
       refferalCard.appendChild(infoSpan);
     });
   }

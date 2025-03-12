@@ -74,6 +74,10 @@ export async function updateSpins(initData) {
       return result;
     } else {
       console.log(result.message);
+      return {
+        spins: 0,
+        balance: 0
+      }
     }
   } catch (error) {
     console.error("Ошибка при уменьшении спинов:", error);
