@@ -43,7 +43,7 @@ window.addEventListener("load", async () => {
   const notification = document.getElementById("copyNotification");
   const copyIcon = document.getElementById("copyIcon");
 
-  referralLinkElement.addEventListener("pointerdown", () => {
+  referralLinkElement.addEventListener("click", () => {
     copyText(textToCopy, notification);
   });
 
