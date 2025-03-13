@@ -20,11 +20,8 @@ window.addEventListener("load", async () => {
   loading.style.display = "flex";
 
   let spins = 0;
-  let referralLink = "";
 
   const data = await getData(initData);
-  console.log(data);
-
   openWelcomeModal(data.spentSpins);
 
   const balanceText = document.getElementById("balance");
@@ -32,7 +29,8 @@ window.addEventListener("load", async () => {
   balanceText.innerText = `Баланс: ${balance}⭐️`;
 
   spins = data.spins;
-  referralLink = data.referralLink;
+
+  let referralLink = `https://t.me/${data.botUsername}?start=${data.referralCode}`;
 
   const giftCooldown = 24 * 60 * 60 * 1000; // 24 часа
 
