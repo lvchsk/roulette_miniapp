@@ -22,25 +22,45 @@ function getSpinsText(spins) {
 }
 
 export async function copyText(textToCopy, notification) {
+  // Вспомогательная функция для fallback
+  function fallbackCopyText(text) {
+    try {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+
+      document.body.appendChild(textarea);
+      textarea.select();
+      const successful = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return successful;
+    } catch (error) {
+      console.error("Fallback copy failed:", error);
+      return false;
+    }
+  }
+
   try {
-    await navigator.clipboard.writeText(textToCopy);
-
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(textToCopy);
+    } else {
+      const result = fallbackCopyText(textToCopy);
+      if (!result) throw new Error("Fallback copy failed");
+    }
     notification.textContent = "Ссылка скопирована!";
-    notification.classList.add("show");
-    notification.classList.remove("hidden");
-
-    setTimeout(() => {
-      notification.classList.remove("show");
-    }, 3000);
   } catch (err) {
     console.error("Ошибка при копировании ссылки:", err);
-
-    notification.textContent = "Ошибка при копировании.";
-    notification.classList.add("show");
-    notification.classList.remove("hidden");
-
-    setTimeout(() => {
-      notification.classList.remove("show");
-    }, 3000);
+    const result = fallbackCopyText(textToCopy);
+    if (result) {
+      notification.textContent = "Ссылка скопирована!";
+    } else {
+      notification.textContent = "Ошибка при копировании.";
+    }
   }
+  notification.classList.add("show");
+  notification.classList.remove("hidden");
+  setTimeout(() => {
+    notification.classList.remove("show");
+  }, 3000);
 }
