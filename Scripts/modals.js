@@ -118,7 +118,7 @@ export function prizeModals(prize, link, actualBalance) {
         modalContent.classList.remove("star300");
         modalContent.classList.remove("spin");
         modalContent.classList.add("star10");
-        balanceText.innerText = `Баланс: ${actualBalance + 10}`;
+        balanceText.innerText = `Баланс: ${actualBalance + 10}⭐️`;
         prizeButton.href = link;
         prizeButton.style.display = "block";
       }
@@ -131,7 +131,7 @@ export function prizeModals(prize, link, actualBalance) {
         modalContent.classList.remove("star300");
         modalContent.classList.remove("spin");
         modalContent.classList.add("star50");
-        balanceText.innerText = `Баланс: ${actualBalance + 50}`;
+        balanceText.innerText = `Баланс: ${actualBalance + 50}⭐️`;
         prizeButton.href = link;
         prizeButton.style.display = "block";
       }
@@ -144,7 +144,7 @@ export function prizeModals(prize, link, actualBalance) {
         modalContent.classList.remove("star300");
         modalContent.classList.remove("spin");
         modalContent.classList.add("star100");
-        balanceText.innerText = `Баланс: ${actualBalance + 100}`;
+        balanceText.innerText = `Баланс: ${actualBalance + 100}⭐️`;
         prizeButton.href = link;
         prizeButton.style.display = "block";
       }
@@ -157,7 +157,7 @@ export function prizeModals(prize, link, actualBalance) {
         modalContent.classList.remove("star300");
         modalContent.classList.remove("spin");
         modalContent.classList.add("star300");
-        balanceText.innerText = `Баланс: ${actualBalance + 300}`;
+        balanceText.innerText = `Баланс: ${actualBalance + 300}⭐️`;
         prizeButton.href = link;
         prizeButton.style.display = "block";
       }

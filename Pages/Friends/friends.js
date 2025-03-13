@@ -6,7 +6,6 @@ import { copyText } from "../../Scripts/textHelper.js";
 window.addEventListener("load", async () => {
   const tg = window.Telegram.WebApp;
   const initData = tg.initData;
- 
   tg.expand();
 
   const container = document.getElementById("container");
@@ -22,9 +21,12 @@ window.addEventListener("load", async () => {
 
   let spins = data.spins;
   let referralLink = `https://t.me/${data.botUsername}?start=${data.referralCode}`;
+  
   const referralList = data.referralList;
 
   console.log(referralList);
+  console.log(window.Telegram);
+  
 
   displayFriends(referralList);
 
@@ -33,21 +35,27 @@ window.addEventListener("load", async () => {
   document.getElementById("referralsCount").innerText = referralList.length;
 
   const inviteBtn = document.getElementById("inviteFriendBtn");
-  inviteBtn.addEventListener("pointerdown", () => inviteFriend(tg, referralLink));
+  inviteBtn.addEventListener("pointerdown", () =>
+    inviteFriend(tg, referralLink)
+  );
 
   const textToCopy = referralLinkElement.innerText;
   const notification = document.getElementById("copyNotification");
+  const copyIcon = document.getElementById("copyIcon");
 
-  referralLinkElement.addEventListener("pointerdown", () =>
-    copyText(textToCopy, notification)
-  );
+  referralLinkElement.addEventListener("pointerdown", () => {
+    copyText(textToCopy, notification);
+  });
+
+  copyIcon.addEventListener("pointerdown", () => {
+    copyText(textToCopy, notification);
+  });
 
   function displayFriends(refferals) {
     refferalsList.innerHTML = "";
     refferals.forEach((refferal) => {
-
       console.log(refferal);
-      
+
       const refferalCard = document.createElement("div");
       refferalCard.classList.add("refferal-card");
 
