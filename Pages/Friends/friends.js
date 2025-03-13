@@ -35,7 +35,7 @@ window.addEventListener("load", async () => {
   document.getElementById("referralsCount").innerText = referralList.length;
 
   const inviteBtn = document.getElementById("inviteFriendBtn");
-  inviteBtn.addEventListener("pointerdown", () =>
+  inviteBtn.addEventListener("click", () =>
     inviteFriend(tg, referralLink)
   );
 
@@ -47,7 +47,7 @@ window.addEventListener("load", async () => {
     copyText(textToCopy, notification);
   });
 
-  copyIcon.addEventListener("pointerdown", () => {
+  copyIcon.addEventListener("click", () => {
     copyText(textToCopy, notification);
   });
 
