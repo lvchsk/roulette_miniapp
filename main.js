@@ -31,7 +31,7 @@ window.addEventListener("load", async () => {
 
   const balanceText = document.getElementById("balance");
   let balance = data.balance;
-  balanceText.innerText = `Баланс: ${balance}`;
+  balanceText.innerText = `Баланс: ${balance}⭐️`;
 
   spins = data.spins;
   referralLink = data.referralLink;

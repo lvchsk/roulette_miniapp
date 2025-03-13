@@ -12,7 +12,8 @@ export function inviteFriend(tg, referralLink) {
           })
           .catch((error) => {
             console.error("Ошибка при открытии контакт-пикера:", error);
-            alert("Не удалось открыть список контактов.");
+            // alert("Не удалось открыть список контактов.");
+            alert(error);
           });
       } else {
         const message = encodeURIComponent(
