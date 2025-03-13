@@ -55,13 +55,13 @@ window.addEventListener("load", async () => {
     const diff = nextGiftTime - now;
 
     if (diff <= 0) {
-      freeSpinButton.addEventListener("pointerdown", giftHandler);
+      freeSpinButton.addEventListener("click", giftHandler);
       timerElement.innerText = "";
       freeSpinButton.disabled = false;
       freeSpinButton.innerText = "Получить";
       clearInterval(timerInterval);
     } else {
-      freeSpinButton.removeEventListener("pointerdown", giftHandler);
+      freeSpinButton.removeEventListener("click", giftHandler);
       freeSpinButton.disabled = true;
       freeSpinButton.classList.add("disabled_btn");
       timerElement.classList.add("disabled_timer");
@@ -114,8 +114,8 @@ window.addEventListener("load", async () => {
 
     spins = result.spins;
     if (spins === 0) {
-      btnMinus.removeEventListener("pointerdown", handleButtonClick);
-      btnMinus.addEventListener("pointerdown", openWarningModal);
+      btnMinus.removeEventListener("click", handleButtonClick);
+      btnMinus.addEventListener("click", openWarningModal);
     }
     updateSpinsDisplay(spins);
 
@@ -137,11 +137,11 @@ window.addEventListener("load", async () => {
   }
 
   if (spins !== 0) {
-    btnMinus.removeEventListener("pointerdown", openWarningModal);
-    btnMinus.addEventListener("pointerdown", handleButtonClick);
+    btnMinus.removeEventListener("click", openWarningModal);
+    btnMinus.addEventListener("click", handleButtonClick);
   } else {
-    btnMinus.removeEventListener("pointerdown", handleButtonClick);
-    btnMinus.addEventListener("pointerdown", openWarningModal);
+    btnMinus.removeEventListener("click", handleButtonClick);
+    btnMinus.addEventListener("click", openWarningModal);
   }
 
   const currentPath = window.location.pathname.replace(
