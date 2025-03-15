@@ -15,7 +15,7 @@ window.addEventListener("load", async () => {
   tg.expand();
 
   const initData = tg.initData;
- 
+
   const loading = document.getElementById("loading");
   loading.style.display = "flex";
 
@@ -23,6 +23,9 @@ window.addEventListener("load", async () => {
 
   const data = await getData(initData);
   openWelcomeModal(data.spentSpins);
+
+  console.log(data);
+  
 
   const balanceText = document.getElementById("balance");
   let balance = data.balance;
