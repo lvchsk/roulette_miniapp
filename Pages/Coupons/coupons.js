@@ -1,5 +1,5 @@
 import { getData } from "../../Scripts/api.js";
-import { copyText } from "../../Scripts/textHelper.js";
+// import { copyText } from "../../Scripts/textHelper.js";
 
 window.addEventListener("load", async () => {
   const tg = window.Telegram.WebApp;
