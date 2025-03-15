@@ -25,35 +25,35 @@ window.addEventListener("load", async () => {
 
   const data = await getData(initData);
 
-  const coupons = data.codes;
-  count.innerText = data.codes.length;
-  displayCoupons(coupons);
+  const coupons = data.balance;
+  count.innerText = coupons;
+  // displayCoupons(coupons);
 
-  function displayCoupons(coupons) {
-    couponsList.innerHTML = "";
+  // function displayCoupons(coupons) {
+  //   couponsList.innerHTML = "";
 
-    coupons.forEach((coupon) => {
-      const card = document.createElement("div");
-      card.classList.add("coupon-card");
-      couponsList.appendChild(card);
+  //   coupons.forEach((coupon) => {
+  //     const card = document.createElement("div");
+  //     card.classList.add("coupon-card");
+  //     couponsList.appendChild(card);
 
-      const couponItem = document.createElement("h6");
-      couponItem.textContent = coupon;
-      couponItem.id = "coupon";
-      card.appendChild(couponItem);
+  //     const couponItem = document.createElement("h6");
+  //     couponItem.textContent = coupon;
+  //     couponItem.id = "coupon";
+  //     card.appendChild(couponItem);
 
-      const copyButton = document.createElement("button");
-      copyButton.textContent = "Копировать";
-      copyButton.classList.add("coupon-button");
-      copyButton.id = "copyLinkBtn";
-      card.appendChild(copyButton);
+  //     const copyButton = document.createElement("button");
+  //     copyButton.textContent = "Копировать";
+  //     copyButton.classList.add("coupon-button");
+  //     copyButton.id = "copyLinkBtn";
+  //     card.appendChild(copyButton);
 
-      const textToCopy = coupon;
-      const notification = document.getElementById("copyNotification");
+  //     const textToCopy = coupon;
+  //     const notification = document.getElementById("copyNotification");
 
-      copyButton.addEventListener("pointerdown", () =>
-        copyText(textToCopy, notification)
-      );
-    });
-  }
+  //     copyButton.addEventListener("pointerdown", () =>
+  //       copyText(textToCopy, notification)
+  //     );
+  //   });
+  // }
 });
