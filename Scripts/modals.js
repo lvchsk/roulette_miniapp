@@ -175,7 +175,7 @@ export function prizeModals(prize, link, actualBalance) {
       // }
       prizeModal.style.visibility = "visible";
       prizeModal.style.opacity = "1";
-    }, 4500);
+    }, 4000);
   }
 }
 
