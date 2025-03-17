@@ -2,7 +2,7 @@ export function updateSpinsDisplay(spins) {
   document.getElementById("spinsRemaining").innerText = getSpinsText(spins);
 }
 
-function getSpinsText(spins) {
+export function getSpinsText(spins) {
   const remainder10 = spins % 10;
   const remainder100 = spins % 100;
 
