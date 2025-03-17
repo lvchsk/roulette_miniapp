@@ -15,7 +15,7 @@ window.addEventListener("load", async () => {
   tg.expand();
 
   const initData = tg.initData;
-
+  
   const loading = document.getElementById("loading");
   loading.style.display = "flex";
 
