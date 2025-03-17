@@ -474,6 +474,14 @@ body {
   height: 300px;
 }
 
+.prize0 {
+  background-image: url(./Photos/prize00.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+
 .modal-content a {
   height: 40px;
   width: 150px;
