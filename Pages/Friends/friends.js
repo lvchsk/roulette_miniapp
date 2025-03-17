@@ -1,7 +1,7 @@
 import { getData } from "../../Scripts/api.js";
 import { highlightActiveLink } from "../../Scripts/highlightLink.js";
 import { inviteFriend } from "../../Scripts/invite.js";
-import { copyText } from "../../Scripts/textHelper.js";
+import { copyText, getSpinsText } from "../../Scripts/textHelper.js";
 
 window.addEventListener("load", async () => {
   const tg = window.Telegram.WebApp;
@@ -32,6 +32,9 @@ window.addEventListener("load", async () => {
 
   referralLinkElement.innerText = referralLink;
   document.getElementById("spinsCount").innerText = `${spins}`;
+  const withoutCount = getSpinsText(spins).split(' ')[1];
+  const spinsText = document.getElementById('spinsText');
+  spinsText.innerText = withoutCount;
   document.getElementById("referralsCount").innerText = referralList.length;
 
   const inviteBtn = document.getElementById("inviteFriendBtn");
