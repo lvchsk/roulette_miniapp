@@ -5,7 +5,6 @@ import {
   openWelcomeModal,
   prizeModals,
 } from "./Scripts/modals.js";
-import { inviteFriend } from "./Scripts/invite.js";
 import { highlightActiveLink } from "./Scripts/highlightLink.js";
 import { getData, updateSpins } from "./Scripts/api.js";
 import { getGift } from "./Scripts/api.js";
@@ -15,7 +14,7 @@ window.addEventListener("load", async () => {
   tg.expand();
 
   const initData = tg.initData;
-  
+
   const loading = document.getElementById("loading");
   loading.style.display = "flex";
 
@@ -23,9 +22,8 @@ window.addEventListener("load", async () => {
 
   const data = await getData(initData);
   openWelcomeModal(data.spentSpins);
-
-  console.log(data);
-  
+  const giftLink = document.getElementById("giftLink");
+  giftLink.href = data.link;
 
   const balanceText = document.getElementById("balance");
   let balance = data.balance;
@@ -33,7 +31,7 @@ window.addEventListener("load", async () => {
 
   spins = data.spins;
 
-  let referralLink = `https://t.me/${data.botUsername}?start=${data.referralCode}`;
+  // let referralLink = `https://t.me/${data.botUsername}?start=${data.referralCode}`;
 
   const giftCooldown = 24 * 60 * 60 * 1000; // 24 часа
 
@@ -41,9 +39,6 @@ window.addEventListener("load", async () => {
   const [day, month, year] = datePart.split(":");
   const registrationDate = new Date(`${year}-${month}-${day}T${timePart}`);
   let nextGiftTime = new Date(registrationDate.getTime() + giftCooldown);
-
-  const inviteBtn = document.getElementById("inviteFriendBtn");
-  inviteBtn.addEventListener("click", () => inviteFriend(tg, referralLink));
 
   updateSpinsDisplay(spins);
 
