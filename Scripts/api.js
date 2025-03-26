@@ -73,7 +73,6 @@ export async function updateSpins(initData) {
     if (result.success) {
       return result;
     } else {
-      console.log(result.message);
       return {
         spins: 0,
         balance: 0
